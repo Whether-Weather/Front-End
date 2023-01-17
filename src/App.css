@@ -88,33 +88,35 @@
 
 /* Top 10 */
 
-.table-head {
-  background-color: #b3b8bd;
+.top-10-table {
+  background-color: #f8f9fa;
+  margin: 1em 0;
+  border: 1px solid #a2a9b1;
+  border-collapse: collapse;
+}
+
+.top-10-table > thead {
+  background-color: #eaecf0;
   border: 1px solid black;
   padding: 10px;
   border-collapse: collapse;
   border-color: inherit;
   font-weight: 500;
   vertical-align: middle;
+
 }
 
-.table-td {
+.top-10-table > * > tr > td {
+  border: 1px solid #a2a9b1;
   text-align: center;
+  padding: 0.2em 0.4em;
 }
 
-.top-10-table {
-  background-color: #dae4ef;
-  margin: 1em 0;
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-.top-10-td-bordered {
-  border: 1px solid black;
-  padding: 10px;
-  border-collapse: collapse;
-  font-weight: 500;
+.top-10-table > * > tr > th {
+  border: 1px solid #a2a9b1;
   text-align: center;
+  padding-left: 6px;
+  padding-right: 12px;
 }
 
 /* NAVBAR */

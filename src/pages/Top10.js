@@ -22,26 +22,34 @@ const About = () => {
         </div>
         <div className="body-content-area">
           <table className="top-10-table">
-            <thead className="table-head">
+            <thead>
               <tr>
-                <td>
+                <th>
                   No.
-                </td>
-                <td>
+                </th>
+                <th>
                   Name
-                </td>
+                </th>
+                <th>
+                  Score
+                </th>
               </tr>
             </thead>
-            {rows.map(row => (
-              <tr key={row.num} className="table-td">
-                <td className="table-td">
-                  {row.num}
-                </td>
-                <td className="table-td">
-                  {row.num}
-                </td>
-              </tr>
-            ))}
+            <tbody>
+              {rows.map(row => (
+                <tr key={row.num}>
+                  <td>
+                    {row.num}
+                  </td>
+                  <td>
+                    Name {row.num}
+                  </td>
+                  <td>
+                    Score {row.num}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
     </div>
