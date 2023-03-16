@@ -3,10 +3,10 @@ import React from "react";
 
 const ImageWithText = ({imageUrl, altText, caption, linkUrl}) => {
   return (
-    <div className="image-with-text-container">
+    <div className="background-image-container">
       <a href={linkUrl}>
-        <img src={imageUrl} alt={altText} />
-        <div className="caption">{caption}</div>
+        <img src={imageUrl} className="body-container" alt={altText} />
+        <div className="background-text">{caption}</div>
       </a>
     </div>
   );

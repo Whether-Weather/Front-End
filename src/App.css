@@ -169,21 +169,10 @@
 
 /* LANDING */
 
-.image-with-text-container {
+.background-image-container {
+  vertical-align: top;
   position: relative;
-}
-
-.image-with-text-container img {
-  width: 100%;
-  height: auto;
-}
-
-.caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px;
+  text-align: center;
+  background-color: #000000;
+  mask-size: auto auto;
 }
