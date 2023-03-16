@@ -128,3 +128,13 @@
 }
 
 /* LANDING */
+
+/* LIVEMAP */
+
+.deckgl-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: calc(100% - 64px); /* subtract navbar height */
+  border: 1px solid black;
+}
