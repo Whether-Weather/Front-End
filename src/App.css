@@ -86,6 +86,11 @@
   border-radius: 20px;
 }
 
+.body-block-text {
+  font-size: calc(3px + 2vmin);
+  font-weight: 400;
+  width: 60%;
+  color: #000000;
 /* Top 10 */
 
 .top-10-table {
