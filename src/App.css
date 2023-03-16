@@ -169,10 +169,9 @@
 
 /* LANDING */
 
-.background-image-container {
+.landing-background-image-container {
   vertical-align: top;
   position: relative;
   text-align: center;
-  background-color: #000000;
   mask-size: auto auto;
 }
