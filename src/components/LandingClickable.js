@@ -6,7 +6,7 @@ const ImageWithText = ({imageUrl, altText, caption, linkUrl}) => {
     <div className="landing-background-image-container">
       <a href={linkUrl}>
         <img src={imageUrl} className="body-container" alt={altText} />
-        <div className="background-text">{caption}</div>
+        <div className="landing-tile-text">{caption}</div>
       </a>
     </div>
   );
