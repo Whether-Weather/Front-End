@@ -125,6 +125,32 @@
 .top-10-table tbody tr:last-of-type {
   border-bottom: 2px solid rgb(54, 207, 255);
 }
+/* About us page */
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+  margin-right:5%;
+}
+
+.about-us-title {
+  max-width: 40%;
+  font-family: "Lato", Helvetica, sans-serif;
+  font-size: 1.375em;
+  line-height: 1.3;
+  line-height: 1.5;
+  color: #767676;
+}
+.about-us-content {
+  max-width: 60%;
+  font-family: "Lato", Helvetica, sans-serif;
+  line-height: 1.5;
+  color: #767676;
+  font-size: 105%;
+}
+
+
 
 /* NAVBAR */
 .navbar-content-area {
