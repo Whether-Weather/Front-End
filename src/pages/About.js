@@ -21,6 +21,7 @@ const About = () => {
             <p>
             We want to create a website/platform to analyze the relationship between harsh weather and transportation safety. Specifically, our platform will aim to analyze how a variety of weather conditions impact the statistical safety of every segment of road within certain geographical regions. 
             </p>
+            
           </div>
           
           
