@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Landing from './pages/Landing.js';
 import About from './pages/About.js';
@@ -21,6 +22,7 @@ function App() {
         <Route path='/liveMap' element={<LiveMap/>} />
         <Route path='/mlMap' element={<MLMap/>} />
     </Routes>
+    <Footer/>
     </Router>
   );
 }
