@@ -3,16 +3,16 @@ import React from "react";
   
 const About = () => {
   const rows = [
-    {num: 1},
-    {num: 2},
-    {num: 3},
-    {num: 4},
-    {num: 5},
-    {num: 6},
-    {num: 7},
-    {num: 8},
-    {num: 9},
-    {num: 10},
+    {num: 1, name: "Pacific Coast Highway (California)", score: 100},
+    {num: 2, name: "Great Ocean Road (Victoria, Australia)", score: 90},
+    {num: 3, name: "Saddle Road (Hawaii)", score: 89},
+    {num: 4, name: "Going-to-the-Sun Road (Montana)", score: 80},
+    {num: 5, name: "Interstate 70 (Colorado)", score: 79},
+    {num: 6, name: "Dalton Highway (Alaska)", score: 60},
+    {num: 7, name: "Beartooth Highway (Wyoming/Montana)", score: 59},
+    {num: 8, name: "Highway 1 (Iceland)", score: 50},
+    {num: 9, name: "Trans-Canada Highway (British Columbia)", score: 49},
+    {num: 10, name: "Amalfi Coast Road (Italy)", score: 40},
   ];
   return (
     <div>
@@ -42,10 +42,10 @@ const About = () => {
                     {row.num}
                   </td>
                   <td>
-                    Name {row.num}
+                    {row.name}
                   </td>
                   <td>
-                    Score {row.num}
+                    {row.score}
                   </td>
                 </tr>
               ))}
