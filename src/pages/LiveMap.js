@@ -17,7 +17,7 @@ const USMAP = '/data/us_states.json'
 const INITIAL_VIEW_STATE = {
   longitude: -120.7401,
   latitude: 47.7511,
-  zoom: 7,
+  zoom: 6,
   maxZoom: 16,
   pitch: 0,
   bearing: 0
@@ -73,27 +73,12 @@ function Livemap() {
   })
   ];
 
-  return (
-    <div>
-      <div className="map-search">
-        <input type="text" placeholder="Search" className="map-search-text"></input>
-      </div>
-      <div className="map-zoom-container">
-        <div className='map-zoom'>
-          <input type="button" value="+" className="map-zoom-text"></input>
-        </div>
-        <div className='map-zoom'>
-          <input type="button" value="-" className="map-zoom-text"></input>
-        </div>
-      </div>
-      <div className="deckgl-container">
-        <DeckGL
-        initialViewState={INITIAL_VIEW_STATE}
-        controller={true}
-        layers={layers} />
-      </div>
-    </div>
-    );
+  return (<div className="deckgl-container">
+    <DeckGL
+      
+      initialViewState={INITIAL_VIEW_STATE}
+      controller={true}
+      layers={layers} /></div>);
 }
 
 
