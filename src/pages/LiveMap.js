@@ -9,14 +9,14 @@ const COUNTRIES =
 const AIR_PORTS =
   'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson'
 
-const DATA_URL = '/data/oct11_test.json';
+const DATA_URL = '/data/output_file.geojson';
 
 const USMAP = '/data/us_states.json'
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-  longitude: -120.7401,
-  latitude: 47.7511,
+  longitude: -122.7401,
+  latitude: 37.7511,
   zoom: 7,
   maxZoom: 16,
   pitch: 0,
@@ -66,7 +66,7 @@ function Livemap() {
       data: DATA_URL,
       lineWidthScale: 1,
       lineWidthMinPixels: 2,
-      getLineColor: d => colorToRGBArray(d.properties.speed),
+      getLineColor: [250,0,0],//d => colorToRGBArray(d.properties.speed),
       getPointRadius: 2,
       getLineWidth: 3,
       visible: true,
