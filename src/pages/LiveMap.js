@@ -9,9 +9,9 @@ const COUNTRIES =
 const AIR_PORTS =
   'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson'
 
-const DATA_URL = '/data/output_file.geojson';
+const DATA_URL = process.env.PUBLIC_URL + '/data/output_file.geojson';
 
-const USMAP = '/data/us_states.json'
+const USMAP = process.env.PUBLIC_URL + '/data/us_states.json';
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
