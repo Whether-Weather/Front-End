@@ -7,6 +7,33 @@ import LiveGraph from '../assets/LineGraph.png';
 import DarkMap from '../assets/DarkMapWithColoredRoads.png';
 import SunriseTraffic from '../assets/SunriseTraffic.png';
 
+
+
+const pages = [
+  {
+      name: 'About Us',
+      link: '/about',
+  },
+  {
+      name: 'Data Findings',
+      link: '/dataFindings',
+  },
+  {
+      name: 'Top 10 Roads',
+      link: '/top10',
+  },
+  {
+      name: 'Live Map',
+      link: '/liveMap',
+  },
+  {
+      name: 'Machine Learning Map',
+      link: '/mlMap',
+  },
+]
+
+
+
 const Landing = () => {
   return (
     <div className="landing-content-area">
