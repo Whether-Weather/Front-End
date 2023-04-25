@@ -1,3 +1,12 @@
-node_modules/
+
 *.pack
-/
+
+node_modules
+output_file.geojson
+
+
+
+.DS_Store
+
+
+
