@@ -3,6 +3,7 @@ import snowyCrash from '../assets/SnowyCrashCrop.jpg';
 import differentWeather from '../assets/DifferentWeather.png';
 import roundaboutSnow from '../assets/roundaboutSnow.jpg';
 import blurredLights from '../assets/BlurredLightsCropped.jpg';
+import josh from '../assets/SuaveJosh.jfif';
 
 
 const About = () => {
@@ -37,7 +38,30 @@ const About = () => {
           <div className="about-us-text"> The data we display can be leveraged to make actionable recommendations such as road maintenance, emergency services planning, trip planning, and car feature selection. </div>
         </div>
       </div>
-      {/* add an about the team section */}
+      <div className="meet-the-team-section">
+        <div className="about-us-title-big">Meet the Team</div>
+        
+        
+        <div className="team-members-all-images">
+          <div className="team-members-container">
+            <div className="team-member">
+              <img src={josh} className="team-member-photo" alt="Josh"/>
+            </div>
+            <div className="team-member">
+              <img src={josh} className="team-member-photo" alt="Josh"/>
+            </div>
+          </div>
+          <div className="team-members-container">
+            <div className="team-member">
+              <img src={josh} className="team-member-photo" alt="Josh"/>
+            </div>
+            <div className="team-member">
+              <img src={josh} className="team-member-photo" alt="Josh"/>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
   );
 };
