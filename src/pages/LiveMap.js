@@ -1,6 +1,8 @@
 import React from 'react';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, ArcLayer } from '@deck.gl/layers/typed'
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+
 import '../App.css';
 
 
@@ -9,7 +11,7 @@ const COUNTRIES =
 const AIR_PORTS =
   'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson'
 
-const DATA_URL = process.env.PUBLIC_URL + '/data/output_file.geojson';
+const DATA_URL = process.env.PUBLIC_URL + '/data/harriscounty.geojson';
 
 const USMAP = process.env.PUBLIC_URL + '/data/us_states.json';
 
@@ -31,36 +33,8 @@ const INITIAL_VIEW_STATE = {
 // DeckGL react component
 function Livemap() {
    
-  function colorToRGBArray(speed) {
-    if (speed[0] < 30) {
-        return [255,0,0];
-    }
-    else if (speed[0] >= 30 && speed[0] < 50) {
-        return [255,128,0];
-    }
-    else if (speed[0] >= 50 && speed[0] < 70) {
-        return [255,255,0];
-    }
-    else if (speed[0] >= 70 && speed[0] < 80) {
-        return [128,255,0];
-    }
-    else if (speed[0] >= 80) {
-        return [0,255,0];
-    }
-}
-
   const layers = [
-    new GeoJsonLayer({
-      id: 'base-map',
-      data: USMAP,
-      // Styles
-      stroked: true,
-      filled: true,
-      lineWidthMinPixels: 2,
-      opacity: 0.4,
-      getLineColor: [60, 60, 60],
-      getFillColor: [200, 200, 200],
-    }),
+    
     new GeoJsonLayer({
       id: 'geojson-layer',
       data: DATA_URL,
@@ -87,10 +61,22 @@ function Livemap() {
         </div>
       </div>
       <div className="deckgl-container">
+      <MapContainer
+          center={[INITIAL_VIEW_STATE.latitude, INITIAL_VIEW_STATE.longitude]}
+          zoom={INITIAL_VIEW_STATE.zoom}
+          style={{ width: '100%', height: '100%', zIndex: 0 }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+        </MapContainer>
         <DeckGL
-        initialViewState={INITIAL_VIEW_STATE}
-        controller={true}
-        layers={layers} />
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}
+          viewState={INITIAL_VIEW_STATE}
+          controller={true}
+          layers={layers}
+        />
       </div>
     </div>
   );
