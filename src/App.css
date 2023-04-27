@@ -546,3 +546,6 @@
 }
 
 
+.mapboxgl-map {
+  z-index: -1;
+}

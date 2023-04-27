@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import { Map } from 'react-map-gl';
+
 
 
 
@@ -11,7 +12,7 @@ import '../App.css';
 // main key = "sk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3lpaGppMzA5bXYzaXFxNmZyMGl3ajkifQ.RUd8qDlsz8gsgW6bEUEGyg"
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3loNDZ3YTA5ZTMzZ3A0bnJtYWtucDQifQ.rwhQ-AcBCdf0q-ouG_5kCA';
-const DATA_URL = process.env.PUBLIC_URL + '/data/output_file.geojson';
+const DATA_URL = process.env.PUBLIC_URL + '/data/harriscounty.geojson';
 
 
 const MAP_STYLE = 'mapbox://styles/mapbox/streets-v12';
@@ -25,8 +26,8 @@ const MAP_STYLE = 'mapbox://styles/mapbox/streets-v12';
 
 
 const INITIAL_VIEW_STATE = {
-  longitude: -122.7401,
-  latitude: 37.7511,
+  longitude: -95.7401,
+  latitude: 29.7511,
   zoom: 7,
   maxZoom: 16,
   pitch: 0,
@@ -35,6 +36,12 @@ const INITIAL_VIEW_STATE = {
 
 function Livemap() {
   
+  const [clickedObject, setClickedObject] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+
   const layers = [
     new GeoJsonLayer({
       id: 'geojson-layer',
@@ -45,8 +52,29 @@ function Livemap() {
       getPointRadius: 2,
       getLineWidth: 3,
       visible: true,
+      pickable: true,
+      
+      onClick: ({ object, x, y }) => {
+        if (object) {
+          const { innerWidth: windowWidth, innerHeight: windowHeight } = window;
+          const offsetX = x > windowWidth / 2 ? -200 : 0;
+          const offsetY = y > windowHeight / 2 ? -100 : 0;
+          setClickedObject(object);
+          setPopupPosition({ x: x + offsetX, y: y + offsetY });
+          setShowPopup(true); // Add this line
+        } else {
+          setClickedObject(null);
+        }
+      },
+      onHover: ({ object }) => {
+        setIsHovering(!!object);
+      }
     }),
   ];
+
+  const getCursor = ({ isDragging }) => {
+    return isHovering ? 'pointer' : (isDragging ? 'grabbing' : 'grab');
+  };
 
   return (
     <div>
@@ -66,14 +94,45 @@ function Livemap() {
           initialViewState={INITIAL_VIEW_STATE}
           controller={true}
           layers={layers}
+          getCursor={getCursor}
         >
           <Map 
             reuseMaps mapStyle={MAP_STYLE} 
             preventStyleDiffing={false} 
             mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+            
           />
         </DeckGL>
       </div>
+      {clickedObject && showPopup && 
+  <div className="map-popup" style={{
+    position: 'fixed',
+    top: popupPosition.y,
+    left: popupPosition.x,
+    backgroundColor: 'white',
+    padding: '10px',
+    borderRadius: '5px',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
+  }}>
+    <button
+      onClick={() => setShowPopup(false)}
+      style={{
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+        background: 'none',
+        border: 'none',
+        fontSize: '16px',
+        fontWeight: 'bold',
+        cursor: 'pointer'
+      }}
+    >
+      &times;
+    </button>
+    <pre>{JSON.stringify(clickedObject.properties, null, 2)}</pre>
+  </div>
+}
+
     </div>
   );
 }
