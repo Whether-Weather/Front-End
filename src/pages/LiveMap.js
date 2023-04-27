@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DeckGL from '@deck.gl/react';
-import { GeoJsonLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer } from '@deck.gl/layers';
 import { Map } from 'react-map-gl';
 
 
@@ -40,6 +40,12 @@ function Livemap() {
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [hoveredObject, setHoveredObject] = useState(null);
+
+  const closePopup = () => {
+    setClickedObject(null);
+    setHoveredObject(null);
+  };
 
 
   const layers = [
@@ -48,11 +54,14 @@ function Livemap() {
       data: DATA_URL,
       lineWidthScale: 1,
       lineWidthMinPixels: 2,
-      getLineColor: [250, 0, 0],
+      //getLineColor: [250, 0, 0],
+      getFillColor: [255, 255, 255, 0],
       getPointRadius: 2,
-      getLineWidth: 3,
+      getLineWidth: (d) => d === hoveredObject || d === clickedObject ? 20 : 3, 
+      getLineColor: (d) => d === hoveredObject || d === clickedObject ? [250, 0, 0] : [0, 250, 0],
       visible: true,
       pickable: true,
+      
       
       onClick: ({ object, x, y }) => {
         if (object) {
@@ -68,7 +77,27 @@ function Livemap() {
       },
       onHover: ({ object }) => {
         setIsHovering(!!object);
-      }
+        setHoveredObject(object);
+      },
+      updateTriggers: {
+        getLineColor: [hoveredObject],
+        getLineWidth: [hoveredObject],
+      },
+    }),
+    new PathLayer({
+      id: 'path-hover-layer',
+      data: DATA_URL,
+      getPath: (d) => d.geometry.coordinates,
+      getWidth: (d) => d === hoveredObject || d === clickedObject ? 20 : 0,
+      getColor: [0, 0, 0, 0], // Transparent color
+      pickable: true,
+      onHover: ({ object }) => {
+        setIsHovering(!!object);
+        setHoveredObject(object);
+      },
+      updateTriggers: {
+        getWidth: [hoveredObject],
+      },
     }),
   ];
 
@@ -114,8 +143,8 @@ function Livemap() {
     borderRadius: '5px',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
   }}>
-    <button
-      onClick={() => setShowPopup(false)}
+    <button 
+      onClick={closePopup}
       style={{
         position: 'absolute',
         top: '5px',
