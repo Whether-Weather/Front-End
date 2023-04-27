@@ -102,7 +102,7 @@ function Livemap() {
   ];
 
   const getCursor = ({ isDragging }) => {
-    return isHovering ? 'pointer' : (isDragging ? 'grabbing' : 'grab');
+    return isHovering ? 'pointer' : (isDragging ? 'grabbing' : 'pointer');
   };
 
   return (
