@@ -4,7 +4,25 @@ import differentWeather from '../assets/DifferentWeather.png';
 import roundaboutSnow from '../assets/roundaboutSnow.jpg';
 import blurredLights from '../assets/BlurredLightsCropped.jpg';
 import josh from '../assets/SuaveJosh.jfif';
+import luca from '../assets/Lucas.jfif';
+import malcolm from '../assets/Malcolm.jfif';
+import graham from '../assets/Graham.jfif'
 
+const TeamMember = ({ imageUrl, linkURL, name, title }) => {
+  return (
+    <a href={linkURL} className="team-member-link">
+      <div className="team-member">
+        <div className="team-member-img-wrapper">
+          <img src={imageUrl} alt={name} className="team-member-img" />
+          <div className="team-member-info">
+            <div className="team-member-name">{name}</div>
+            <div className="team-member-title">{title}</div>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+};
 
 const About = () => {
   return (
@@ -44,20 +62,28 @@ const About = () => {
         
         <div className="team-members-all-images">
           <div className="team-members-container">
-            <div className="team-member">
-              <img src={josh} className="team-member-photo" alt="Josh"/>
-            </div>
-            <div className="team-member">
-              <img src={josh} className="team-member-photo" alt="Josh"/>
-            </div>
+            <TeamMember
+            imageUrl={josh}
+            name="Josh Kelleran"
+            title="Backend Developer"
+            linkURL="https://www.google.com/"/>
+            <TeamMember
+            imageUrl={graham}
+            name="Graham Purvis"
+            title="Backend Developer"
+            linkUrl="https://www.linkedin.com/in/graham-purvis/"/>
           </div>
           <div className="team-members-container">
-            <div className="team-member">
-              <img src={josh} className="team-member-photo" alt="Josh"/>
-            </div>
-            <div className="team-member">
-              <img src={josh} className="team-member-photo" alt="Josh"/>
-            </div>
+            <TeamMember
+            imageUrl={luca}
+            name="Lucas Voron"
+            title="Frontend Developer"
+            linkUrl="https://www.linkedin.com/in/lucasvoron/"/>
+            <TeamMember
+            imageUrl={malcolm}
+            name="Malcolm Weaver"
+            title="Frontend Developer"
+            linkUrl="https://www.linkedin.com/in/malcolm-weaver-a71986212/"/>
           </div>
         </div>
         

@@ -216,8 +216,6 @@
   margin-bottom: 30px;
 }
 
-
-
 .meet-the-team-section {
   flex: auto;
   flex-direction: row;
@@ -236,30 +234,95 @@
   flex: row;
   width: 100%;
   justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .team-members-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  width:50%;
 }
 
 .team-member {
   position: relative;
-  height: 230px;
-  width: 230px;
-  margin: 10px;
-  
+  width: 100%;
+  padding: 10px;
 }
 
-.team-member-photo{
-  width: 100%;
-  background-color: #000000;
-  border-radius: 5px;
-  
+.team-member-wrapper {
+  position: relative;
+  display: inline-block;
 }
+
+.team-member-link {
+  width: 50%;
+}
+
+.team-member {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-member-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+.team-member-img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+.team-member-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.team-member-name {
+  font-weight: bold;
+  font-size: 2.5vw;
+  min-width: 100px;
+  margin-bottom: 5px;
+}
+
+.team-member-title {
+  font-size: 1.5vw;
+  min-width: 100px;
+  margin-bottom: 5px;
+}
+
 
 @media (max-width: 1024px) {
   .about-us-section-container {
@@ -278,10 +341,13 @@
   }
   .about-us-title-big {
     order: 10;
-    
   }
   .team-members-all-images{
     flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .team-members-container{
+    width:100%;
   }
 }
 
