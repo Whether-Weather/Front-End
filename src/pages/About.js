@@ -8,9 +8,9 @@ import luca from '../assets/Lucas.jfif';
 import malcolm from '../assets/Malcolm.jfif';
 import graham from '../assets/Graham.jfif'
 
-const TeamMember = ({ imageUrl, linkURL, name, title }) => {
+const TeamMember = ({ imageUrl, linkUrl, name, title }) => {
   return (
-    <a href={linkURL} className="team-member-link">
+    <a href={linkUrl} className="team-member-link">
       <div className="team-member">
         <div className="team-member-img-wrapper">
           <img src={imageUrl} alt={name} className="team-member-img" />
@@ -66,7 +66,7 @@ const About = () => {
             imageUrl={josh}
             name="Josh Kelleran"
             title="Backend Developer"
-            linkURL="https://www.google.com/"/>
+            linkUrl="https://www.google.com/"/>
             <TeamMember
             imageUrl={graham}
             name="Graham Purvis"
