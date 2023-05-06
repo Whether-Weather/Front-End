@@ -434,22 +434,27 @@
 
 .map-search {
   position: absolute;
-  margin: 30px;
+  margin: 40px;
   z-index: 10;
 }
 
 .map-search-text {
   font-size: xx-large;
+  border-radius: 12px;
+  border: none;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .map-zoom-container {
   position: absolute;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: calc(80vh);
   margin-left: calc(100% - 80px);
   z-index: 10;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .map-zoom {
@@ -459,17 +464,47 @@
 .map-zoom-text {
   font-size: xx-large;
   width: 50px;
+  border-radius: 30px;
+  border: none;
 }
 
 /* ML MAP */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+  margin: 10px 0px 10px 0px;
+}
+
+.slide-form-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: calc(100% - 180px);
+  z-index: 10;
+  justify-content: flex-end;
+  background: #dddddd;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.slider-settings-text {
+  margin-top: 5px;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.slider-submission {
+  margin-top: 5px;
+  border-radius: 12px;
+  border: solid;
+  border-color: #3d3d3d;
+  font-size: medium;
 }
 
 /* The slider itself */
 .slider {
-  margin: 30px 0px 0px 0px;
-  -webkit-appearance: none;
+  margin: 0px 0px 0px 0px;
+  appearance: none;
   width: 100%;
   height: 15px;
   border-radius: 5px;  
@@ -481,7 +516,6 @@
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
   width: 25px;
   height: 25px;
@@ -610,7 +644,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .mapboxgl-map {
   z-index: -1;
