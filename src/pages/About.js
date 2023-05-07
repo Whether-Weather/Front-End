@@ -66,7 +66,7 @@ const About = () => {
             imageUrl={josh}
             name="Josh Kelleran"
             title="Backend Developer"
-            linkUrl="https://www.google.com/"/>
+            linkUrl="https://www.linkedin.com/in/josh-kelleran-67760a221/"/>
             <TeamMember
             imageUrl={graham}
             name="Graham Purvis"
