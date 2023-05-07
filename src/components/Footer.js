@@ -16,7 +16,7 @@ const pages = [
         link: '/top10',
     },
     {
-        name: 'Do not sell my personal information',
+        name: 'Connect with Us',
         link: '/liveMap',
     },
     {
@@ -35,7 +35,6 @@ function Footer() {
                 })}
             </div>
             <div className="footer-page-titles-container">
-                <div className='footer-page-titles'>CONNECT WITH US</div>
                 <div className='footer-page-titles'><Link to='/'> <img src={logo} className="company-logo" alt="logo"/> </Link></div>
             </div>
         </div>

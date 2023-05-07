@@ -205,7 +205,7 @@ function MLMap() {
               <div className="slider-settings-text">Wind Direction: {direction}</div>
             </div>
             <div className="slidecontainer">
-              <input type="range" min="1" max="360" defaultValue="180" className="slider" id="myRange" step="1" onChange={(event) => setSpeed(event.target.value)}></input>
+              <input type="range" min="1" max="100" defaultValue="50" className="slider" id="myRange" step="1" onChange={(event) => setSpeed(event.target.value)}></input>
               <div className="slider-settings-text">Wind Speed: {speed}</div>
             </div>
             <div className="slidecontainer">
@@ -256,7 +256,9 @@ function MLMap() {
       >
       &times;
     </button>
-    <pre>{JSON.stringify(clickedObject.properties, null, 2)}</pre>
+    <pre>
+      {JSON.stringify(clickedObject.properties, null, 2)}
+    </pre>
     </div>
   }
       </div>
