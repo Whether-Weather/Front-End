@@ -112,13 +112,14 @@ function MLMap() {
     return isHovering ? 'pointer' : (isDragging ? 'grabbing' : 'pointer');
   };
 
-  const [rain, setRain] = useState(0);
-  const [temperature, setTemperature] = useState(0);
-  const [humidity, setHumidity] = useState(0);
-  const [time, setTime] = useState(0);
-  const [dew, setDew] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [speed, setSpeed] = useState(0);
+  const [rain, setRain] = useState(1);
+  const [temperature, setTemperature] = useState(10);
+  const [humidity, setHumidity] = useState(50);
+  const [time, setTime] = useState(12);
+  const [dew, setDew] = useState(50);
+  const [direction, setDirection] = useState(180);
+  const [speed, setSpeed] = useState(50);
+  const [pressure, setPressure] = useState(1000);
 
   useEffect(() => {
     console.log("Rain has changed:", rain);
@@ -128,7 +129,8 @@ function MLMap() {
     console.log("Dew Point has changed:", dew);
     console.log("Wind Direction has changed:", direction);
     console.log("Wind Speed has changed:", speed);
-  }, [rain, temperature, humidity, time, dew, direction, speed]);
+    console.log("Air Pressure has changed:", speed);
+  }, [rain, temperature, humidity, time, dew, direction, speed, pressure]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -140,6 +142,7 @@ function MLMap() {
       dew: dew,
       direction: direction,
       speed: speed,
+      pressure: pressure,
     };
 
     fetch("http://localhost:5000/get-model", {
@@ -149,13 +152,13 @@ function MLMap() {
       },
       body: JSON.stringify(data),
       })
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setGeojsonData(data.geojson);
-      // })
-      // .catch((error) => {
-      //   console.error("Error fetching geojson data: ", error);
-      // });
+      .then((response) => response.json())
+      .then((data) => {
+        setGeojsonData(data.geojson);
+      })
+      .catch((error) => {
+        console.error("Error fetching geojson data: ", error);
+      });
   };
 
   return (
@@ -186,7 +189,7 @@ function MLMap() {
               <div className="slider-settings-text">Time of Day: {time}</div>
             </div>
             <div className="slidecontainer">
-              <input type="range" min="-20" max="40" defaultValue="32" className="slider" id="myRange" step="1" onChange={(event) => setTemperature(event.target.value)}></input>
+              <input type="range" min="-20" max="40" defaultValue="10" className="slider" id="myRange" step="1" onChange={(event) => setTemperature(event.target.value)}></input>
               <div className="slider-settings-text">Temperature: {temperature}</div>
             </div>
             <div className="slidecontainer">
@@ -204,6 +207,10 @@ function MLMap() {
             <div className="slidecontainer">
               <input type="range" min="1" max="360" defaultValue="180" className="slider" id="myRange" step="1" onChange={(event) => setSpeed(event.target.value)}></input>
               <div className="slider-settings-text">Wind Speed: {speed}</div>
+            </div>
+            <div className="slidecontainer">
+              <input type="range" min="900" max="1100" defaultValue="1000" className="slider" id="myRange" step="1" onChange={(event) => setPressure(event.target.value)}></input>
+              <div className="slider-settings-text">Air Pressure: {pressure}</div>
             </div>
             <button type="submit" className="slider-submission">Submit</button>
           </form>
