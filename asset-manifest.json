@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e729feae.css",
-    "main.js": "/static/js/main.ac8d3208.js",
+    "main.css": "/static/css/main.6249424e.css",
+    "main.js": "/static/js/main.7faff9b9.js",
     "static/js/483.08cd59f2.chunk.js": "/static/js/483.08cd59f2.chunk.js",
     "static/js/787.a7877110.chunk.js": "/static/js/787.a7877110.chunk.js",
     "static/media/BlurredLightsCropped.jpg": "/static/media/BlurredLightsCropped.68ba3ef1b6d233bbb9e3.jpg",
@@ -23,13 +23,13 @@
     "static/media/roundaboutSnow.jpg": "/static/media/roundaboutSnow.c225dee5a02f307044bd.jpg",
     "static/media/logo.svg": "/static/media/logo.caf620f7d53407ba606e4293a9ff6872.svg",
     "index.html": "/index.html",
-    "main.e729feae.css.map": "/static/css/main.e729feae.css.map",
-    "main.ac8d3208.js.map": "/static/js/main.ac8d3208.js.map",
+    "main.6249424e.css.map": "/static/css/main.6249424e.css.map",
+    "main.7faff9b9.js.map": "/static/js/main.7faff9b9.js.map",
     "483.08cd59f2.chunk.js.map": "/static/js/483.08cd59f2.chunk.js.map",
     "787.a7877110.chunk.js.map": "/static/js/787.a7877110.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e729feae.css",
-    "static/js/main.ac8d3208.js"
+    "static/css/main.6249424e.css",
+    "static/js/main.7faff9b9.js"
   ]
 }
