@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6249424e.css",
-    "main.js": "/static/js/main.7faff9b9.js",
+    "main.css": "/static/css/main.c9df3124.css",
+    "main.js": "/static/js/main.d8189a9b.js",
     "static/js/483.08cd59f2.chunk.js": "/static/js/483.08cd59f2.chunk.js",
     "static/js/787.a7877110.chunk.js": "/static/js/787.a7877110.chunk.js",
     "static/media/BlurredLightsCropped.jpg": "/static/media/BlurredLightsCropped.68ba3ef1b6d233bbb9e3.jpg",
@@ -11,25 +11,30 @@
     "static/media/FunnyTrafic.png": "/static/media/FunnyTrafic.aa312061288cdfa753c1.png",
     "static/media/LineGraph.png": "/static/media/LineGraph.5f5d2c52f45729817cfa.png",
     "static/media/data-background.png": "/static/media/data-background.77a141392c731c0457fd.png",
+    "static/media/rushHour.jpg": "/static/media/rushHour.7673f38d2eddd6beaeb7.jpg",
     "static/media/DifferentWeather.png": "/static/media/DifferentWeather.5d957e758b0a3042f714.png",
     "static/media/home-background.png": "/static/media/home-background.65f97f6ca3d9a13ef6f3.png",
+    "static/media/BusyStreet.jpg": "/static/media/BusyStreet.abb47298a15102ad930c.jpg",
     "static/media/SunriseTraffic.png": "/static/media/SunriseTraffic.96bc145c43a63205c7f6.png",
     "static/media/SnowyCrashCrop.jpg": "/static/media/SnowyCrashCrop.736e9a65e4751d969487.jpg",
+    "static/media/CrashInTheSun.jpg": "/static/media/CrashInTheSun.ca151346ee14eb00003e.jpg",
     "static/media/Malcolm.jfif": "/static/media/Malcolm.1170224a5f6840e42a58.jfif",
+    "static/media/DrivingThroughPuddle.jpg": "/static/media/DrivingThroughPuddle.be970fa7dc3074904e85.jpg",
     "static/media/SuaveJosh.jfif": "/static/media/SuaveJosh.b97c571afed6b44d4858.jfif",
     "static/media/Graham.jfif": "/static/media/Graham.cfc114b67ba81c183043.jfif",
     "static/media/Lucas.jfif": "/static/media/Lucas.1cf7b8de4f237d94ab7d.jfif",
     "static/media/top-10-background.jpeg": "/static/media/top-10-background.e96eaf01498d9151ba6d.jpeg",
+    "static/media/FoggyDrive.jpg": "/static/media/FoggyDrive.02e9e7eb030982b3409a.jpg",
     "static/media/roundaboutSnow.jpg": "/static/media/roundaboutSnow.c225dee5a02f307044bd.jpg",
     "static/media/logo.svg": "/static/media/logo.caf620f7d53407ba606e4293a9ff6872.svg",
     "index.html": "/index.html",
-    "main.6249424e.css.map": "/static/css/main.6249424e.css.map",
-    "main.7faff9b9.js.map": "/static/js/main.7faff9b9.js.map",
+    "main.c9df3124.css.map": "/static/css/main.c9df3124.css.map",
+    "main.d8189a9b.js.map": "/static/js/main.d8189a9b.js.map",
     "483.08cd59f2.chunk.js.map": "/static/js/483.08cd59f2.chunk.js.map",
     "787.a7877110.chunk.js.map": "/static/js/787.a7877110.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6249424e.css",
-    "static/js/main.7faff9b9.js"
+    "static/css/main.c9df3124.css",
+    "static/js/main.d8189a9b.js"
   ]
 }
