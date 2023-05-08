@@ -2,13 +2,8 @@
 import DeckGL from '@deck.gl/react';
 import { GeoJsonLayer, PathLayer } from '@deck.gl/layers';
 import { Map } from 'react-map-gl';
-import React, { useEffect, useState } from "react";
-
-
+import React, { useState } from "react";
 import '../App.css';
-
-
-// main key = "sk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3lpaGppMzA5bXYzaXFxNmZyMGl3ajkifQ.RUd8qDlsz8gsgW6bEUEGyg"
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3loNDZ3YTA5ZTMzZ3A0bnJtYWtucDQifQ.rwhQ-AcBCdf0q-ouG_5kCA';
 const DATA_URL = process.env.PUBLIC_URL + '/data/output_file.geojson';
@@ -21,9 +16,43 @@ const MAP_STYLE = 'mapbox://styles/mapbox/streets-v12';
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 
 function Livemap() {
-  const [zoomLevel, setZoomLevel] = useState(11);
-  const [latitude, setLatitude] = useState(37.3387);
-  const [longitude, setLongitude] = useState(-121.8853); 
+  const [viewport, setViewport] = useState({
+    latitude: 37.3387,
+    longitude: -121.8853,
+    zoom: 11,
+    maxZoom: 16,
+    pitch: 0,
+    bearing: 0
+  });
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery}.json?access_token=${MAPBOX_ACCESS_TOKEN}`
+      );
+      const data = await response.json();
+      const center = data.features[0].center;
+
+      setViewport({
+        ...viewport,
+        latitude: center[1],
+        longitude: center[0],
+        zoom: 11
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSearchQueryChange = event => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleViewState = ({ viewState }) => {
+    setViewport(viewState);
+  };
   
   const [clickedObject, setClickedObject] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -34,29 +63,6 @@ function Livemap() {
   const closePopup = () => {
     setClickedObject(null);
     setHoveredObject(null);
-  };
-
-  const onZoomInClick = () => {
-    setZoomLevel(zoomLevel + 1);
-  };
-
-  const onZoomOutClick = () => {
-    setZoomLevel(zoomLevel - 1);
-  };
-
-  const onViewStateChange = ({ viewState }) => {
-    setLatitude(viewState.latitude);
-    setLongitude(viewState.longitude);
-    setZoomLevel(viewState.zoom);
-  };
-
-  const INITIAL_VIEW_STATE = {
-    longitude: longitude,
-    latitude: latitude,
-    zoom: zoomLevel,
-    maxZoom: 16,
-    pitch: 0,
-    bearing: 0
   };
 
   const layers = [
@@ -119,30 +125,40 @@ function Livemap() {
   return (
     <div>
       <div className="map-search">
-        <input type="text" placeholder="Search" className="map-search-text"></input>
+        <input 
+          type="text" 
+          placeholder="San Jose, CA" 
+          className="map-search-text" 
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+        ></input>
+        <div>
+          <button onClick={handleSearch} className="map-search-button">Search</button>
+        </div>
       </div>
       <div className="map-zoom-container">
-      <div className="map-zoom">
-          <input type="button" value="+" className="map-zoom-text" onClick={onZoomInClick}></input>
+        <div className="map-zoom">
+          <input type="button" value="+" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom + 1 })}/>
         </div>
         <div className="map-zoom">
-          <input type="button" value="-" className="map-zoom-text" onClick={onZoomOutClick}></input>
+          <input type="button" value="-" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom - 1 })}/>
         </div>
       </div>
       <div className="deckgl-container">
         <DeckGL
-          initialViewState = {INITIAL_VIEW_STATE}
+          initialViewState = {viewport}
           controller={true}
           layers={layers}
           getCursor={getCursor}
-          onViewStateChange={onViewStateChange}
+          onViewStateChange={handleViewState}
         >
           <Map 
             reuseMaps mapStyle={MAP_STYLE} 
             preventStyleDiffing={false} 
             mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-            
-          />
+            {...viewport}
+          >
+          </Map>
         </DeckGL>
       </div>
       {clickedObject && showPopup && 

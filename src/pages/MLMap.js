@@ -23,10 +23,6 @@ function MLMap() {
     return [255, 0, 0];
   }
 
-  const [zoomLevel, setZoomLevel] = useState(11);
-  const [latitude, setLatitude] = useState(37.3387);
-  const [longitude, setLongitude] = useState(-121.8853); 
-
   const [clickedObject, setClickedObject] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -38,24 +34,43 @@ function MLMap() {
     setHoveredObject(null);
   };
 
-  const onZoomInClick = () => {
-    setZoomLevel(zoomLevel + 1);
-  };
-
-  const onZoomOutClick = () => {
-    setZoomLevel(zoomLevel - 1);
-  };
-
-  const INITIAL_VIEW_STATE = {
-    longitude: longitude,
-    latitude: latitude,
-    zoom: zoomLevel,
+  const [viewport, setViewport] = useState({
+    latitude: 37.3387,
+    longitude: -121.8853,
+    zoom: 11,
     maxZoom: 16,
     pitch: 0,
     bearing: 0
+  });
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery}.json?access_token=${MAPBOX_ACCESS_TOKEN}`
+      );
+      const data = await response.json();
+      const center = data.features[0].center;
+
+      setViewport({
+        ...viewport,
+        latitude: center[1],
+        longitude: center[0],
+        zoom: 11
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const [searchText, setSearchText] = useState('');
+  const handleSearchQueryChange = event => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleViewState = ({ viewState }) => {
+    setViewport(viewState);
+  };
 
   const [geojsonData, setGeojsonData] = useState(DATA_URL);
   const layers = [
@@ -145,7 +160,7 @@ function MLMap() {
       pressure: pressure,
     };
 
-    fetch("http://localhost:5000/get-model", {
+    fetch("http://129.210.115.226:5000/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -164,18 +179,23 @@ function MLMap() {
   return (
     <div>
       <div className="map-search">
-        <input
-          type="text"
-          placeholder="Search"
-          className="map-search-text"
+        <input 
+          type="text" 
+          placeholder="San Jose, CA" 
+          className="map-search-text" 
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
         ></input>
+        <div>
+          <button onClick={handleSearch} className="map-search-button">Search</button>
+        </div>
       </div>
       <div className="map-zoom-container">
         <div className="map-zoom">
-          <input type="button" value="+" className="map-zoom-text" onClick={onZoomInClick}></input>
+          <input type="button" value="+" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom + 1 })}/>
         </div>
         <div className="map-zoom">
-          <input type="button" value="-" className="map-zoom-text" onClick={onZoomOutClick}></input>
+          <input type="button" value="-" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom - 1 })}/>
         </div>
       </div>
         <div className="slide-form-container">
@@ -217,17 +237,17 @@ function MLMap() {
         </div>
       <div className="deckgl-container">
         <DeckGL
-        initialViewState = {INITIAL_VIEW_STATE}
-        controller={true}
-        layers={layers}
-        getCursor={getCursor}
-        // onViewStateChange={onViewStateChange}
-      >
+          initialViewState = {viewport}
+          controller={true}
+          layers={layers}
+          getCursor={getCursor}
+          onViewStateChange={handleViewState}
+        >
         <Map 
           reuseMaps mapStyle={MAP_STYLE} 
           preventStyleDiffing={false} 
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-          
+          {...viewport}
         />
       </DeckGL>
       </div>

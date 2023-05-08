@@ -489,6 +489,15 @@ a:active { text-decoration: none; }
   padding-bottom: 3px;
 }
 
+.map-search-button {
+  position: absolute;
+  margin-top: 15px;
+  background-color: #ffffff;
+  border: 8px solid white;
+  border-radius: 12px;
+  font-size: medium;
+}
+
 .map-zoom-container {
   position: absolute;
   display: flex;
