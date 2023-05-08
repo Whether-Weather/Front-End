@@ -149,7 +149,7 @@ function MLMap() {
       pressure: pressure,
     };
 
-    fetch("http://129.210.115.226:5000/get-model", {
+    fetch("http://localhost:5000/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -279,9 +279,12 @@ function MLMap() {
       >
       &times;
     </button>
-    <pre>
-      {JSON.stringify(clickedObject.properties, null, 2)}
-    </pre>
+    <div className="pop-up-text">Speed:</div>
+    <pre>{JSON.stringify(clickedObject.properties.Speed, null, 2)}</pre>
+    <div className="pop-up-text">Reference Speed:</div>
+    <pre>{JSON.stringify(clickedObject.properties.Refrence_Speed, null, 2)}</pre>
+    <div className="pop-up-text">Percent Difference:</div>
+    <pre>{JSON.stringify(clickedObject.properties.Percent_Difference, null, 2)}</pre>
     </div>
   }
       </div>
