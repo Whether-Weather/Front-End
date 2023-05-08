@@ -335,6 +335,7 @@ a:active { text-decoration: none; }
 }
 
 /* DATA FINDINGS */
+/* DATA FINDINGS */
 
 .data-findings-title {
   font-family: "Lato", Helvetica, sans-serif;
@@ -357,17 +358,17 @@ a:active { text-decoration: none; }
   order: 9;
   border-bottom: 1px solid #e1e1e1;
 }
-
-.data-findings-image-container{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
-  max-width: 55%;
-  border-radius: 20px;
+.data-findings-section-container-bottom{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 50px 50px 50px 50px;
+  padding-bottom: 50px;
+  flex-direction: row;
+  order: 9;
 }
 
-.about-us-image2-container {
+.data-findings-image-container{
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 30px;
@@ -391,6 +392,30 @@ a:active { text-decoration: none; }
   margin-left: 30px;
   margin-right: 30px;
   flex-grow: 2;
+}
+
+@media (max-width: 1024px) {
+  .data-findings-section-container {
+    flex-direction: column;
+    
+  }
+  .data-findings-section-container-bottom {
+    flex-direction: column;
+    
+  }
+  .data-findings-image-container {
+    max-width: 600px; 
+    min-width: 350px; 
+    width: 80%;
+    order: 9;
+  }
+
+  .data-findings-title-over-text {
+    order: 10;
+  }
+  .data-findings-title-big {
+    order: 10;
+  }
 }
 
 /* NAVBAR */
