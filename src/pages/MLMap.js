@@ -1,12 +1,13 @@
 import { GeoJsonLayer, PathLayer } from "@deck.gl/layers/typed";
 import DeckGL from "@deck.gl/react";
-import { Map } from 'react-map-gl';
 import React, { useEffect, useState } from "react";
+import { Map } from "react-map-gl";
 import "../App.css";
 
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3loNDZ3YTA5ZTMzZ3A0bnJtYWtucDQifQ.rwhQ-AcBCdf0q-ouG_5kCA';
-const DATA_URL = process.env.PUBLIC_URL + '/data/output_file.geojson';
-const MAP_STYLE = 'mapbox://styles/mapbox/streets-v12';
+const MAPBOX_ACCESS_TOKEN =
+  "pk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3loNDZ3YTA5ZTMzZ3A0bnJtYWtucDQifQ.rwhQ-AcBCdf0q-ouG_5kCA";
+const DATA_URL = process.env.PUBLIC_URL + "/data/output_file.geojson";
+const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 // Viewport settings
 
 // Data to be used by the LineLayer
@@ -40,10 +41,10 @@ function MLMap() {
     zoom: 11,
     maxZoom: 16,
     pitch: 0,
-    bearing: 0
+    bearing: 0,
   });
 
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = async () => {
     try {
@@ -57,14 +58,14 @@ function MLMap() {
         ...viewport,
         latitude: center[1],
         longitude: center[0],
-        zoom: 11
+        zoom: 11,
       });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSearchQueryChange = event => {
+  const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
@@ -79,8 +80,12 @@ function MLMap() {
       data: geojsonData,
       lineWidthScale: 1,
       lineWidthMinPixels: 2,
-      getLineWidth: (d) => d === hoveredObject || d === clickedObject ? 20 : 3, 
-      getLineColor: (d) => d === hoveredObject || d === clickedObject ? [128, 128, 128] : getColor(d.properties),
+      getLineWidth: (d) =>
+        d === hoveredObject || d === clickedObject ? 20 : 3,
+      getLineColor: (d) =>
+        d === hoveredObject || d === clickedObject
+          ? [128, 128, 128]
+          : getColor(d.properties),
       getPointRadius: 2,
       pickable: true,
       visible: true,
@@ -107,10 +112,10 @@ function MLMap() {
     }),
 
     new PathLayer({
-      id: 'path-hover-layer',
+      id: "path-hover-layer",
       data: DATA_URL,
       getPath: (d) => d.geometry.coordinates,
-      getWidth: (d) => d === hoveredObject || d === clickedObject ? 20 : 0,
+      getWidth: (d) => (d === hoveredObject || d === clickedObject ? 20 : 0),
       getColor: [0, 0, 0, 0], // Transparent color
       pickable: true,
       onHover: ({ object }) => {
@@ -124,7 +129,7 @@ function MLMap() {
   ];
 
   const getCursor = ({ isDragging }) => {
-    return isHovering ? 'pointer' : (isDragging ? 'grabbing' : 'pointer');
+    return isHovering ? "pointer" : isDragging ? "grabbing" : "pointer";
   };
 
   const [rain, setRain] = useState(1);
@@ -160,13 +165,13 @@ function MLMap() {
       pressure: pressure,
     };
 
-    fetch("http://129.210.115.226:5000/get-model", {
+    fetch("http://localhost:5000/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-      })
+    })
       .then((response) => response.json())
       .then((data) => {
         setGeojsonData(data.geojson);
@@ -179,110 +184,206 @@ function MLMap() {
   return (
     <div>
       <div className="map-search">
-        <input 
-          type="text" 
-          placeholder="San Jose, CA" 
-          className="map-search-text" 
+        <input
+          type="text"
+          placeholder="San Jose, CA"
+          className="map-search-text"
           value={searchQuery}
           onChange={handleSearchQueryChange}
         ></input>
         <div>
-          <button onClick={handleSearch} className="map-search-button">Search</button>
+          <button onClick={handleSearch} className="map-search-button">
+            Search
+          </button>
         </div>
       </div>
       <div className="map-zoom-container">
         <div className="map-zoom">
-          <input type="button" value="+" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom + 1 })}/>
+          <input
+            type="button"
+            value="+"
+            className="map-zoom-text"
+            onClick={() =>
+              setViewport({ ...viewport, zoom: viewport.zoom + 1 })
+            }
+          />
         </div>
         <div className="map-zoom">
-          <input type="button" value="-" className="map-zoom-text" onClick={() => setViewport({ ...viewport, zoom: viewport.zoom - 1 })}/>
+          <input
+            type="button"
+            value="-"
+            className="map-zoom-text"
+            onClick={() =>
+              setViewport({ ...viewport, zoom: viewport.zoom - 1 })
+            }
+          />
         </div>
       </div>
-        <div className="slide-form-container">
-          <form data-testid="survey" onSubmit={handleSubmit}>
-            <div className="slidecontainer">
-              <input type="range" min="0" max="2" defaultValue="1" className="slider" id="myRange" step="0.1" onChange={(event) => setRain(event.target.value)}></input>
-              <div className="slider-settings-text">Rain: {rain}</div>
+      <div className="slide-form-container">
+        <form data-testid="survey" onSubmit={handleSubmit}>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="0"
+              max="2"
+              defaultValue="1"
+              className="slider"
+              id="myRange"
+              step="0.1"
+              onChange={(event) => setRain(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Rain: {rain}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="0"
+              max="24"
+              defaultValue="12"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setTime(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Time of Day: {time}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="-20"
+              max="40"
+              defaultValue="10"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setTemperature(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">
+              Temperature: {temperature}
             </div>
-            <div className="slidecontainer">
-              <input type="range" min="0" max="24" defaultValue="12" className="slider" id="myRange" step="1" onChange={(event) => setTime(event.target.value)}></input>
-              <div className="slider-settings-text">Time of Day: {time}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              defaultValue="50"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setHumidity(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Humidity: {humidity}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              defaultValue="50"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setDew(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Dew Point: {dew}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="1"
+              max="360"
+              defaultValue="180"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setDirection(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">
+              Wind Direction: {direction}
             </div>
-            <div className="slidecontainer">
-              <input type="range" min="-20" max="40" defaultValue="10" className="slider" id="myRange" step="1" onChange={(event) => setTemperature(event.target.value)}></input>
-              <div className="slider-settings-text">Temperature: {temperature}</div>
-            </div>
-            <div className="slidecontainer">
-              <input type="range" min="0" max="100" defaultValue="50" className="slider" id="myRange" step="1" onChange={(event) => setHumidity(event.target.value)}></input>
-              <div className="slider-settings-text">Humidity: {humidity}</div>
-            </div>
-            <div className="slidecontainer">
-              <input type="range" min="0" max="100" defaultValue="50" className="slider" id="myRange" step="1" onChange={(event) => setDew(event.target.value)}></input>
-              <div className="slider-settings-text">Dew Point: {dew}</div>
-            </div>
-            <div className="slidecontainer">
-              <input type="range" min="1" max="360" defaultValue="180" className="slider" id="myRange" step="1" onChange={(event) => setDirection(event.target.value)}></input>
-              <div className="slider-settings-text">Wind Direction: {direction}</div>
-            </div>
-            <div className="slidecontainer">
-              <input type="range" min="0" max="100" defaultValue="50" className="slider" id="myRange" step="1" onChange={(event) => setSpeed(event.target.value)}></input>
-              <div className="slider-settings-text">Wind Speed: {speed}</div>
-            </div>
-            <div className="slidecontainer">
-              <input type="range" min="900" max="1100" defaultValue="1000" className="slider" id="myRange" step="1" onChange={(event) => setPressure(event.target.value)}></input>
-              <div className="slider-settings-text">Air Pressure: {pressure}</div>
-            </div>
-            <button type="submit" className="slider-submission">Submit</button>
-          </form>
-        </div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              defaultValue="50"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setSpeed(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Wind Speed: {speed}</div>
+          </div>
+          <div className="slidecontainer">
+            <input
+              type="range"
+              min="900"
+              max="1100"
+              defaultValue="1000"
+              className="slider"
+              id="myRange"
+              step="1"
+              onChange={(event) => setPressure(event.target.value)}
+            ></input>
+            <div className="slider-settings-text">Air Pressure: {pressure}</div>
+          </div>
+          <button type="submit" className="slider-submission">
+            Submit
+          </button>
+        </form>
+      </div>
       <div className="deckgl-container">
         <DeckGL
-          initialViewState = {viewport}
+          initialViewState={viewport}
           controller={true}
           layers={layers}
           getCursor={getCursor}
           onViewStateChange={handleViewState}
         >
-        <Map 
-          reuseMaps mapStyle={MAP_STYLE} 
-          preventStyleDiffing={false} 
-          mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
-          {...viewport}
-        />
-      </DeckGL>
+          <Map
+            reuseMaps
+            mapStyle={MAP_STYLE}
+            preventStyleDiffing={false}
+            mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
+            {...viewport}
+          />
+        </DeckGL>
       </div>
-      {clickedObject && showPopup && 
-      <div className="map-popup" style={{
-        position: 'fixed',
-        top: popupPosition.y,
-        left: popupPosition.x,
-        backgroundColor: 'white',
-        padding: '10px',
-        borderRadius: '5px',
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)'
-      }}>
-      <button 
-        onClick={closePopup}
-        style={{
-          position: 'absolute',
-          top: '5px',
-          right: '5px',
-          background: 'none',
-          border: 'none',
-          fontSize: '16px',
-          fontWeight: 'bold',
-          cursor: 'pointer'
-        }}
-      >
-      &times;
-    </button>
-    <pre>
-      {JSON.stringify(clickedObject.properties, null, 2)}
-    </pre>
+      {clickedObject && showPopup && (
+        <div
+          className="map-popup"
+          style={{
+            position: "fixed",
+            top: popupPosition.y,
+            left: popupPosition.x,
+            backgroundColor: "white",
+            padding: "10px",
+            borderRadius: "5px",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          <button
+            onClick={closePopup}
+            style={{
+              position: "absolute",
+              top: "5px",
+              right: "5px",
+              background: "none",
+              border: "none",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            &times;
+          </button>
+          <pre>{JSON.stringify(clickedObject.properties, null, 2)}</pre>
+        </div>
+      )}
     </div>
-  }
-      </div>
-    );
-  }
+  );
+}
 
 export default MLMap;
