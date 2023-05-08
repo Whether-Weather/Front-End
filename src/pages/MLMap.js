@@ -141,19 +141,8 @@ function MLMap() {
   const [speed, setSpeed] = useState(50);
   const [pressure, setPressure] = useState(1000);
 
-  useEffect(() => {
-    console.log("Rain has changed:", rain);
-    console.log("Temperature has changed:", temperature);
-    console.log("Humidity has changed:", humidity);
-    console.log("Time has changed:", time);
-    console.log("Dew Point has changed:", dew);
-    console.log("Wind Direction has changed:", direction);
-    console.log("Wind Speed has changed:", speed);
-    console.log("Air Pressure has changed:", speed);
-  }, [rain, temperature, humidity, time, dew, direction, speed, pressure]);
-
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     var data = {
       rain: rain,
       temperature: temperature,
@@ -180,6 +169,20 @@ function MLMap() {
         console.error("Error fetching geojson data: ", error);
       });
   };
+
+  useEffect(() => {
+    console.log("Rain has changed:", rain);
+    console.log("Temperature has changed:", temperature);
+    console.log("Humidity has changed:", humidity);
+    console.log("Time has changed:", time);
+    console.log("Dew Point has changed:", dew);
+    console.log("Wind Direction has changed:", direction);
+    console.log("Wind Speed has changed:", speed);
+    console.log("Air Pressure has changed:", speed);
+
+    handleSubmit();
+    console.log("that bitch been called");
+  }, [rain, temperature, humidity, time, dew, direction, speed, pressure]);
 
   return (
     <div>
@@ -379,7 +382,20 @@ function MLMap() {
           >
             &times;
           </button>
-          <pre>{JSON.stringify(clickedObject.properties, null, 2)}</pre>
+          <div className="pop-up-text">Speed:</div>
+          <pre>{JSON.stringify(clickedObject.properties.Speed, null, 2)}</pre>
+          <div className="pop-up-text">Reference Speed:</div>
+          <pre>
+            {JSON.stringify(clickedObject.properties.Refrence_Speed, null, 2)}
+          </pre>
+          <div className="pop-up-text">Percent Difference:</div>
+          <pre>
+            {JSON.stringify(
+              clickedObject.properties.Percent_Difference,
+              null,
+              2
+            )}
+          </pre>
         </div>
       )}
     </div>

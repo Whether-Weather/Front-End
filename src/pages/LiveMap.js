@@ -236,7 +236,10 @@ function Livemap() {
           >
             &times;
           </button>
-          <pre>{JSON.stringify(clickedObject.properties, null, 2)}</pre>
+          <div className="pop-up-text">Segment Id:</div>
+          <pre>
+            {JSON.stringify(clickedObject.properties.segment_id, null, 2)}
+          </pre>
         </div>
       )}
     </div>
