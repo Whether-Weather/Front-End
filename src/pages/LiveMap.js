@@ -190,6 +190,12 @@ function Livemap() {
             }
           />
         </div>
+        <div className="weather-container">
+          <div className="weather-content">
+            <div className="weather-display-text">Current Weather: {}</div>
+            {/* {JSON.stringify(clickedObject.properties.segment_id, null, 2)} */}
+          </div>
+        </div>
       </div>
       <div className="deckgl-container">
         <DeckGL

@@ -544,6 +544,44 @@ a:active { text-decoration: none; }
   border: none;
 }
 
+.weather-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: calc(100vh - 160px);
+  margin-left: calc(100% - 200px);
+  z-index: 10;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+.weather-content {
+  display: flex;
+  flex-direction: column;
+  background: #dddddd;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.weather-display-text {
+  /* margin: 5px; */
+  font-size: medium;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+  .weather-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: calc(100vh - 200px);
+    margin-left: calc(100% - 200px);
+    z-index: 10;
+    justify-content: flex-end;
+    width: 200px;
+  }
+}
+
 /* ML MAP */
 .slidecontainer {
   width: 100%; /* Width of the outside container */
