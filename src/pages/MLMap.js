@@ -386,7 +386,7 @@ function MLMap() {
           <pre>{JSON.stringify(clickedObject.properties.Speed, null, 2)}</pre>
           <div className="pop-up-text">Reference Speed:</div>
           <pre>
-            {JSON.stringify(clickedObject.properties.Refrence_Speed, null, 2)}
+            {JSON.stringify(clickedObject.properties.Reference_Speed, null, 2)}
           </pre>
           <div className="pop-up-text">Percent Difference:</div>
           <pre>
