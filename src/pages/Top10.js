@@ -3,16 +3,16 @@ import React from "react";
   
 const About = () => {
   const rows = [
-    {num: 1, name: "Pacific Coast Highway (California)", score: 100},
-    {num: 2, name: "Great Ocean Road (Victoria, Australia)", score: 90},
-    {num: 3, name: "Saddle Road (Hawaii)", score: 89},
-    {num: 4, name: "Going-to-the-Sun Road (Montana)", score: 80},
-    {num: 5, name: "Interstate 70 (Colorado)", score: 79},
-    {num: 6, name: "Dalton Highway (Alaska)", score: 60},
-    {num: 7, name: "Beartooth Highway (Wyoming/Montana)", score: 59},
-    {num: 8, name: "Highway 1 (Iceland)", score: 50},
-    {num: 9, name: "Trans-Canada Highway (British Columbia)", score: 49},
-    {num: 10, name: "Amalfi Coast Road (Italy)", score: 40},
+    {num: 1, name: "El Camino Real & California Ave, Palo Alto, CA 94306", score:  69.25},
+    {num: 2, name: "US-101 Cloverleaf Interchange 362", score: 21.05},
+    {num: 3, name: "CA-85 East Interchange 4", score: 12.75},
+    {num: 4, name: "CA-85 exit 6 and Almaden Expressway intersection", score:  11.59},
+    {num: 5, name: "US-101 North Exit 386 B", score: 9.91},
+    {num: 6, name: "US-101 Cloverleaf Interchange 365", score: 8.88},
+    {num: 7, name: "CA-85 East at Exit 8", score: 7.71},
+    {num: 8, name: "US-101 Cloverleaf Interchange 366", score: 7.49},
+    {num: 9, name: "CA-17 Interchange 22", score: 7.46},
+    {num: 10, name: "CA-152 Casa De Fruta Parkway Interchange", score: 7.42},
   ];
   return (
     <div>
@@ -31,7 +31,7 @@ const About = () => {
                   Name
                 </th>
                 <th>
-                  Score
+                  Slow-Down Speed (avg speed delta)
                 </th>
               </tr>
             </thead>
@@ -45,7 +45,7 @@ const About = () => {
                     {row.name}
                   </td>
                   <td>
-                    {row.score}
+                    {row.score}  meters per sec
                   </td>
                 </tr>
               ))}
