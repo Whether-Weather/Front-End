@@ -242,9 +242,19 @@ function Livemap() {
           >
             &times;
           </button>
-          <div className="pop-up-text">Segment Id:</div>
+          <div className="pop-up-text">Speed:</div>
+          <pre>{JSON.stringify(clickedObject.properties.Speed, null, 2)}</pre>
+          <div className="pop-up-text">Reference Speed:</div>
           <pre>
-            {JSON.stringify(clickedObject.properties.segment_id, null, 2)}
+            {JSON.stringify(clickedObject.properties.Reference_Speed, null, 2)}
+          </pre>
+          <div className="pop-up-text">Percent Difference:</div>
+          <pre>
+            {JSON.stringify(
+              clickedObject.properties.Percent_Difference,
+              null,
+              2
+            )}
           </pre>
         </div>
       )}
