@@ -28,7 +28,7 @@ function Livemap() {
   useEffect(() => {
     var data = {};
 
-    fetch("http://localhost:5000/get-model", {
+    fetch("http://127.0.0.1:5000/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -142,7 +142,8 @@ function MLMap() {
   const [pressure, setPressure] = useState(1000);
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
+    
     var data = {
       rain: rain,
       temperature: temperature,
@@ -153,8 +154,8 @@ function MLMap() {
       speed: speed,
       pressure: pressure,
     };
-
-    fetch("http://localhost:5000/get-model", {
+    console.log(data)
+    fetch("http://127.0.0.1:5000/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -180,8 +181,8 @@ function MLMap() {
     console.log("Wind Speed has changed:", speed);
     console.log("Air Pressure has changed:", speed);
 
-    handleSubmit();
-    console.log("that bitch been called");
+    // handleSubmit();
+    // console.log("that has been called");
   }, [rain, temperature, humidity, time, dew, direction, speed, pressure]);
 
   return (
