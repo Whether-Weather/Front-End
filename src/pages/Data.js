@@ -5,16 +5,26 @@ import CrashInTheSun from "../assets/CrashInTheSun.jpg";
 import DrivingThroughPuddle from "../assets/DrivingThroughPuddle.jpg";
 import FoggyDrive from "../assets/FoggyDrive.jpg";
 import rushHour from "../assets/rushHour.jpg";
+import dataFindingsImage from "../assets/dataFindingsImage.png";
 
 
-const About = () => {
+const Data = () => {
   return (
-    <div>
+    <div>    
+      
       <div className="background-image-container">
         <img src={background} className="background-image" alt="logo" />
         <div className="background-text">Data Findings</div>
       </div>
 
+      <div className="data-findings-section-container">
+        <div className="data-findings-title-over-text"> 
+          <div className="data-findings-title">Welcome to our Data Findings page!</div>
+          <div className="data-findings-text"> Explore traffic patterns and driving behavior in Seattle and other cities based on data analysis using ML or regression models from INRIX traffic company.</div>  
+        </div>
+        <img src={dataFindingsImage} className="data-findings-image-container" alt="Data Findings" />
+      </div>  
+      
       <div className="data-findings-section-container">
         <img src={DrivingThroughPuddle} className="data-findings-image-container" alt="Driving Through A Puddle" /> 
         <div className="data-findings-title-over-text">
@@ -47,7 +57,7 @@ const About = () => {
         <img src={rushHour} className="data-findings-image-container" alt="Crash In The Sun" /> 
       </div>
       
-      <div className="data-findings-section-container">
+      <div className="data-findings-section-container-bottom">
         <img src={FoggyDrive} className="data-findings-image-container" alt="Driving Through A Puddle" /> 
         <div className="data-findings-title-over-text">
           <div className="data-findings-title">Humidity and Percipitation</div>
@@ -59,4 +69,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Data;
