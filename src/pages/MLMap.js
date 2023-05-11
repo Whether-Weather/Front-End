@@ -23,7 +23,7 @@ function MLMap() {
     if (typeof properties.color !== "undefined") {
       return properties.color;
     }
-    return [255, 0, 0];
+    return [96, 96, 96];
   }
 
   const [clickedObject, setClickedObject] = useState(null);
