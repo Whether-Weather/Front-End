@@ -16,6 +16,8 @@ const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 
+var Current_County = "San Jose, CA"
+
 function Livemap() {
   function getColor(properties) {
     if (typeof properties.color !== "undefined") {
@@ -26,7 +28,7 @@ function Livemap() {
   const [geojsonData, setGeojsonData] = useState(null);
 
   useEffect(() => {
-    var data = {};
+    var data = {county: Current_County};
 
     fetch("http://127.0.0.1:5000/get-model", {
       method: "POST",
@@ -63,12 +65,34 @@ function Livemap() {
       const data = await response.json();
       const center = data.features[0].center;
 
+      var desired_county = {
+        county: searchQuery
+      };
+
       setViewport({
         ...viewport,
         latitude: center[1],
         longitude: center[0],
         zoom: 11,
       });
+      if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
+        Current_County = desired_county.county
+        fetch("http://127.0.0.1:5000/get-new-model", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(desired_county),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          setGeojsonData(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching geojson data: ", error);
+        }); 
+      }
     } catch (error) {
       console.log(error);
     }

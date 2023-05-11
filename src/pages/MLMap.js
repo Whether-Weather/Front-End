@@ -15,6 +15,8 @@ const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 //   {sourcePosition: [-122.41669, 37.7853], targetPosition: [-122.41669, 37.781]}
 // ];
 
+var Current_County = "San Jose, CA"
+
 // DeckGL react component
 function MLMap() {
   function getColor(properties) {
@@ -48,11 +50,16 @@ function MLMap() {
 
   const handleSearch = async () => {
     try {
+      console.log(searchQuery)
       const response = await fetch(
         `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery}.json?access_token=${MAPBOX_ACCESS_TOKEN}`
       );
       const data = await response.json();
       const center = data.features[0].center;
+
+      var desired_county ={
+        county: searchQuery
+      };
 
       setViewport({
         ...viewport,
@@ -60,6 +67,24 @@ function MLMap() {
         longitude: center[0],
         zoom: 11,
       });
+      if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
+            Current_County = desired_county.county
+            fetch("http://127.0.0.1:5000/get-new-model", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(desired_county),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data)
+              setGeojsonData(data);
+            })
+            .catch((error) => {
+              console.error("Error fetching geojson data: ", error);
+            }); 
+          }
     } catch (error) {
       console.log(error);
     }
@@ -153,6 +178,8 @@ function MLMap() {
       direction: direction,
       speed: speed,
       pressure: pressure,
+      county: Current_County
+
     };
     console.log(data)
     fetch("http://127.0.0.1:5000/get-model", {
