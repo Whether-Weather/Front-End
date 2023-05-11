@@ -593,7 +593,7 @@ a:active { text-decoration: none; }
   display: flex;
   flex-direction: column;
   margin-top: 40px;
-  margin-left: calc(100% - 200px);
+  margin-left: calc(100% - 220px);
   z-index: 10;
   justify-content: flex-end;
   background: #dddddd;
@@ -607,7 +607,7 @@ a:active { text-decoration: none; }
     display: flex;
     flex-direction: column;
     margin-top: 100px;
-    margin-left: calc(100% - 200px);
+    margin-left: calc(100% - 230px);
     z-index: 10;
     justify-content: flex-end;
     background: #dddddd;
@@ -618,7 +618,7 @@ a:active { text-decoration: none; }
 
 .slider-settings-text {
   margin-top: 5px;
-  font-size: medium;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -634,7 +634,7 @@ a:active { text-decoration: none; }
 .slider {
   margin: 0px 0px 0px 0px;
   appearance: none;
-  width: 160px;
+  width: 180px;
   height: 15px;
   border-radius: 5px;  
   background: #ffffff;

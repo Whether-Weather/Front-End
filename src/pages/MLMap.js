@@ -157,7 +157,7 @@ function MLMap() {
     return isHovering ? "pointer" : isDragging ? "grabbing" : "pointer";
   };
 
-  const [rain, setRain] = useState(1);
+  const [rain, setRain] = useState(0.5);
   const [temperature, setTemperature] = useState(10);
   const [humidity, setHumidity] = useState(50);
   const [time, setTime] = useState(12);
@@ -256,14 +256,14 @@ function MLMap() {
             <input
               type="range"
               min="0"
-              max="2"
-              defaultValue="1"
+              max="1"
+              defaultValue="0.5"
               className="slider"
               id="myRange"
               step="0.1"
               onChange={(event) => setRain(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Rain: {rain}</div>
+            <div className="slider-settings-text">Rain (in): {rain}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -276,7 +276,7 @@ function MLMap() {
               step="1"
               onChange={(event) => setTime(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Time of Day: {time}</div>
+            <div className="slider-settings-text">Time of Day (UTC): {time}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -290,7 +290,7 @@ function MLMap() {
               onChange={(event) => setTemperature(event.target.value)}
             ></input>
             <div className="slider-settings-text">
-              Temperature: {temperature}
+              Temperature (C°): {temperature}
             </div>
           </div>
           <div className="slidecontainer">
@@ -304,7 +304,7 @@ function MLMap() {
               step="1"
               onChange={(event) => setHumidity(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Humidity: {humidity}</div>
+            <div className="slider-settings-text">Humidity (%): {humidity}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -317,7 +317,7 @@ function MLMap() {
               step="1"
               onChange={(event) => setDew(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Dew Point: {dew}</div>
+            <div className="slider-settings-text">Dew Point (%): {dew}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -331,7 +331,7 @@ function MLMap() {
               onChange={(event) => setDirection(event.target.value)}
             ></input>
             <div className="slider-settings-text">
-              Wind Direction: {direction}
+              Wind Direction (°): {direction}
             </div>
           </div>
           <div className="slidecontainer">
@@ -345,7 +345,7 @@ function MLMap() {
               step="1"
               onChange={(event) => setSpeed(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Wind Speed: {speed}</div>
+            <div className="slider-settings-text">Wind Speed (km/hr): {speed}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -358,7 +358,7 @@ function MLMap() {
               step="1"
               onChange={(event) => setPressure(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Air Pressure: {pressure}</div>
+            <div className="slider-settings-text">Air Pressure (hPa): {pressure}</div>
           </div>
           <button type="submit" className="slider-submission">
             Submit
