@@ -548,7 +548,7 @@ a:active { text-decoration: none; }
   position: absolute;
   display: flex;
   flex-direction: column;
-  margin-bottom: calc(100vh - 160px);
+  margin-bottom: calc(100vh - 450px);
   margin-left: calc(100% - 200px);
   z-index: 10;
   justify-content: flex-end;

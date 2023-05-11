@@ -26,6 +26,7 @@ function Livemap() {
     return [255, 0, 0];
   }
   const [geojsonData, setGeojsonData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
     var data = {county: Current_County};
@@ -40,6 +41,7 @@ function Livemap() {
       .then((response) => response.json())
       .then((data) => {
         setGeojsonData(data.geojson);
+        setWeatherData(data.weather)
       })
       .catch((error) => {
         console.error("Error fetching geojson data: ", error);
@@ -217,7 +219,12 @@ function Livemap() {
         <div className="weather-container">
           <div className="weather-content">
             <div className="weather-display-text">Current Weather: {}</div>
-            {/* {JSON.stringify(clickedObject.properties.segment_id, null, 2)} */}
+            {weatherData && Object.entries(weatherData).map(([key, value]) => (
+              <div key={key}>
+                <div>{key}</div>
+                <div>{value}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
