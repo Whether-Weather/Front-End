@@ -157,14 +157,14 @@ function MLMap() {
     return isHovering ? "pointer" : isDragging ? "grabbing" : "pointer";
   };
 
-  const [rain, setRain] = useState(0.5);
+  const [rain, setRain] = useState(0.0);
   const [temperature, setTemperature] = useState(10);
   const [humidity, setHumidity] = useState(50);
   const [time, setTime] = useState(12);
-  const [dew, setDew] = useState(50);
+  const [dew, setDew] = useState(44);
   const [direction, setDirection] = useState(180);
-  const [speed, setSpeed] = useState(50);
-  const [pressure, setPressure] = useState(1000);
+  const [speed, setSpeed] = useState(0);
+  const [pressure, setPressure] = useState(1013);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -257,7 +257,7 @@ function MLMap() {
               type="range"
               min="0"
               max="1"
-              defaultValue="0.5"
+              defaultValue="0.0"
               className="slider"
               id="myRange"
               step="0.1"
@@ -311,13 +311,13 @@ function MLMap() {
               type="range"
               min="0"
               max="100"
-              defaultValue="50"
+              defaultValue="44"
               className="slider"
               id="myRange"
               step="1"
               onChange={(event) => setDew(event.target.value)}
             ></input>
-            <div className="slider-settings-text">Dew Point (%): {dew}</div>
+            <div className="slider-settings-text">Dew Point (°C): {dew}</div>
           </div>
           <div className="slidecontainer">
             <input
@@ -339,7 +339,7 @@ function MLMap() {
               type="range"
               min="0"
               max="100"
-              defaultValue="50"
+              defaultValue="0"
               className="slider"
               id="myRange"
               step="1"
@@ -352,7 +352,7 @@ function MLMap() {
               type="range"
               min="900"
               max="1100"
-              defaultValue="1000"
+              defaultValue="1013"
               className="slider"
               id="myRange"
               step="1"
