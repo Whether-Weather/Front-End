@@ -290,7 +290,7 @@ function MLMap() {
               onChange={(event) => setTemperature(event.target.value)}
             ></input>
             <div className="slider-settings-text">
-              Temperature (C°): {temperature}
+              Temperature (°C): {temperature}
             </div>
           </div>
           <div className="slidecontainer">
