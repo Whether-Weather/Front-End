@@ -60,7 +60,7 @@ const Data = () => {
       <div className="data-findings-section-container-bottom">
         <img src={FoggyDrive} className="data-findings-image-container" alt="Driving Through A Puddle" /> 
         <div className="data-findings-title-over-text">
-          <div className="data-findings-title">Humidity and Percipitation</div>
+          <div className="data-findings-title">Humidity and Precipitation</div>
           <div className="data-findings-text">Relative humidity has a higher correlation with traffic speed than precipitation, indicating that high humidity can lead to reduced visibility and more cautious driving.</div>
         </div>
       </div>
