@@ -45,7 +45,7 @@ const About = () => {
       <div className="about-us-section-container">
         <div className="about-us-title-over-text">
           <div className="about-us-title">Our Solution</div>
-          <div className="about-us-text"> We want to create a platform to analyze the relationship between weather conditions (such as percipitation, humidity, time of day, temperature etc.)  and transportation safety</div>
+          <div className="about-us-text"> We want to create a platform to analyze the relationship between weather conditions (such as precipitation, humidity, time of day, temperature etc.)  and transportation safety</div>
         </div>
         <img src={roundaboutSnow} className="about-us-image2-container" alt="Roundabout Snow" />
       </div>
