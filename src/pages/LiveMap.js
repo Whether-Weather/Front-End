@@ -16,7 +16,7 @@ const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 
-var Current_County = "San Jose, CA"
+var Current_County = "San Jose, CA";
 
 function Livemap() {
   function getColor(properties) {
@@ -26,9 +26,10 @@ function Livemap() {
     return [255, 0, 0];
   }
   const [geojsonData, setGeojsonData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
-    var data = {county: Current_County};
+    var data = { county: Current_County };
 
     fetch("http://127.0.0.1:5000/get-model", {
       method: "POST",
@@ -40,6 +41,7 @@ function Livemap() {
       .then((response) => response.json())
       .then((data) => {
         setGeojsonData(data.geojson);
+        setWeatherData(data.weather);
       })
       .catch((error) => {
         console.error("Error fetching geojson data: ", error);
@@ -66,7 +68,7 @@ function Livemap() {
       const center = data.features[0].center;
 
       var desired_county = {
-        county: searchQuery
+        county: searchQuery,
       };
 
       setViewport({
@@ -75,23 +77,26 @@ function Livemap() {
         longitude: center[0],
         zoom: 11,
       });
-      if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
-        Current_County = desired_county.county
+      if (
+        desired_county.county === "Harris County, Texas" ||
+        desired_county.county === "San Jose, CA"
+      ) {
+        Current_County = desired_county.county;
         fetch("http://127.0.0.1:5000/get-new-model", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(desired_county),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-          setGeojsonData(data);
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(desired_county),
         })
-        .catch((error) => {
-          console.error("Error fetching geojson data: ", error);
-        }); 
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            setGeojsonData(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching geojson data: ", error);
+          });
       }
     } catch (error) {
       console.log(error);
@@ -217,7 +222,12 @@ function Livemap() {
         <div className="weather-container">
           <div className="weather-content">
             <div className="weather-display-text">Current Weather: {}</div>
-            {/* {JSON.stringify(clickedObject.properties.segment_id, null, 2)} */}
+            {Object.entries(weatherData).map(([key, value]) => (
+              <div key={key}>
+                <div>{key}</div>
+                <div>{value}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
