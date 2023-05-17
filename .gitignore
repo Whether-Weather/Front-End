@@ -4,7 +4,7 @@
 node_modules
 output_file.geojson
 
-
+.env
 
 .DS_Store
 

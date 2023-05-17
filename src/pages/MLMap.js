@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Map } from "react-map-gl";
 import "../App.css";
 
-const MAPBOX_ACCESS_TOKEN =
-  "pk.eyJ1IjoibWVsbG9qZWxsb2ZlbGxvIiwiYSI6ImNsZ3loNDZ3YTA5ZTMzZ3A0bnJtYWtucDQifQ.rwhQ-AcBCdf0q-ouG_5kCA";
+const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const DATA_URL = process.env.PUBLIC_URL + "/data/output_file.geojson";
 const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 // Viewport settings
