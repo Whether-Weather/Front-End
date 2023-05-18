@@ -7,15 +7,27 @@ module.exports = function (api) {
         {
           useBuiltIns: 'entry',
           corejs: 3,
-          // Exclude Mapbox GL JS from the transpilation process
-          exclude: ['@mapbox/mapbox-gl'],
         },
       ],
       '@babel/preset-react',
     ];
   
+    const plugins = [
+      [
+        '@babel/plugin-transform-runtime',
+        {
+          corejs: false,
+          helpers: true,
+          regenerator: true,
+          useESModules: false,
+          absoluteRuntime: '@babel/runtime',
+        },
+      ],
+    ];
+  
     return {
       presets,
+      plugins,
     };
   };
   
