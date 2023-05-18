@@ -21,7 +21,8 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "worker-loader": "^3.0.8"
   },
   "homepage": "https://Whether-Weather.github.io/",
   "scripts": {
@@ -40,9 +41,9 @@
   },
   "browserslist": {
     "production": [
-      "defaults",
-      "not IE 11",
-      "maintained node versions"
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
@@ -54,5 +55,4 @@
   "devDependencies": {
     "gh-pages": "^3.2.3"
   }
-  
 }

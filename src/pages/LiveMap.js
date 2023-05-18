@@ -2,8 +2,17 @@
 import { GeoJsonLayer, PathLayer } from "@deck.gl/layers";
 import DeckGL from "@deck.gl/react";
 import React, { useEffect, useState } from "react";
-import { Map } from "react-map-gl";
 import "../App.css";
+import { Map } from "react-map-gl";
+
+import mapboxgl from 'mapbox-gl';
+
+// The following is required to stop "npm build" from transpiling mapbox code.
+// notice the exclamation point in the import.
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const DATA_URL = process.env.PUBLIC_URL + "/data/output_file.geojson";
