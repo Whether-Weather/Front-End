@@ -9,6 +9,8 @@ const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const DATA_URL = process.env.PUBLIC_URL + "/data/output_file.geojson";
 const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 
+
+
 //'mapbox://styles/mapbox/dark-v10';
 //'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 //"https://tiles.basemaps.cartocdn.com/gl/voyager-gl-style/style.json";
