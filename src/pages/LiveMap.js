@@ -40,16 +40,19 @@ function Livemap() {
 
   useEffect(() => {
     var data = {county: Current_County};
-
-    fetch("http://127.0.0.1:5000/get-model", {
+    console.log("http://35.87.6.139/get-model")
+    fetch("http://35.87.6.139/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     })
+      
       .then((response) => response.json())
       .then((data) => {
+        
+        console.log(data)
         setGeojsonData(data.geojson);
         setWeatherData(data.weather)
       })
@@ -78,7 +81,8 @@ function Livemap() {
       const center = data.features[0].center;
 
       var desired_county = {
-        county: searchQuery
+        county: searchQuery,
+        map: "LIVEMAP"
       };
 
       setViewport({
@@ -87,9 +91,10 @@ function Livemap() {
         longitude: center[0],
         zoom: 11,
       });
+      console.log(center)
       if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
         Current_County = desired_county.county
-        fetch("http://127.0.0.1:5000/get-new-model", {
+        fetch("http://35.87.6.139/get-new-model", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,8 +103,9 @@ function Livemap() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data)
-          setGeojsonData(data);
+    
+          setGeojsonData(data.geojson);
+          setWeatherData(data.weather)
         })
         .catch((error) => {
           console.error("Error fetching geojson data: ", error);
