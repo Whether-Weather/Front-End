@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ef7eb5b3.css",
-    "main.js": "/static/js/main.cd9bc716.js",
+    "main.js": "/static/js/main.363b168f.js",
     "static/js/787.a7877110.chunk.js": "/static/js/787.a7877110.chunk.js",
     "static/media/BlurredLightsCropped.jpg": "/static/media/BlurredLightsCropped.68ba3ef1b6d233bbb9e3.jpg",
     "static/media/DarkWorld.png": "/static/media/DarkWorld.f85796d7efed7bdf5023.png",
@@ -29,11 +29,11 @@
     "static/media/logo.svg": "/static/media/logo.015850420cde59633d036bb88ba2c6cc.svg",
     "index.html": "/index.html",
     "main.ef7eb5b3.css.map": "/static/css/main.ef7eb5b3.css.map",
-    "main.cd9bc716.js.map": "/static/js/main.cd9bc716.js.map",
+    "main.363b168f.js.map": "/static/js/main.363b168f.js.map",
     "787.a7877110.chunk.js.map": "/static/js/787.a7877110.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef7eb5b3.css",
-    "static/js/main.cd9bc716.js"
+    "static/js/main.363b168f.js"
   ]
 }
