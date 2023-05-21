@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ef7eb5b3.css",
-    "main.js": "/static/js/main.d2e2733e.js",
+    "main.js": "/static/js/main.3b689a3d.js",
     "static/js/787.a7877110.chunk.js": "/static/js/787.a7877110.chunk.js",
     "static/media/BlurredLightsCropped.jpg": "/static/media/BlurredLightsCropped.68ba3ef1b6d233bbb9e3.jpg",
     "static/media/DarkWorld.png": "/static/media/DarkWorld.f85796d7efed7bdf5023.png",
@@ -12,8 +12,8 @@
     "static/media/data-background.png": "/static/media/data-background.77a141392c731c0457fd.png",
     "static/media/rushHour.jpg": "/static/media/rushHour.7673f38d2eddd6beaeb7.jpg",
     "static/media/DifferentWeather.png": "/static/media/DifferentWeather.5d957e758b0a3042f714.png",
+    "static/js/mapbox-gl-csp-worker.b8266530.worker.js": "/static/js/mapbox-gl-csp-worker.b8266530.worker.js",
     "static/media/home-background.png": "/static/media/home-background.65f97f6ca3d9a13ef6f3.png",
-    "static/js/mapbox-gl-csp-worker.8ff9326b.worker.js": "/static/js/mapbox-gl-csp-worker.8ff9326b.worker.js",
     "static/media/BusyStreet.jpg": "/static/media/BusyStreet.abb47298a15102ad930c.jpg",
     "static/media/SunriseTraffic.png": "/static/media/SunriseTraffic.96bc145c43a63205c7f6.png",
     "static/media/SnowyCrashCrop.jpg": "/static/media/SnowyCrashCrop.736e9a65e4751d969487.jpg",
@@ -29,11 +29,11 @@
     "static/media/logo.svg": "/static/media/logo.015850420cde59633d036bb88ba2c6cc.svg",
     "index.html": "/index.html",
     "main.ef7eb5b3.css.map": "/static/css/main.ef7eb5b3.css.map",
-    "main.d2e2733e.js.map": "/static/js/main.d2e2733e.js.map",
+    "main.3b689a3d.js.map": "/static/js/main.3b689a3d.js.map",
     "787.a7877110.chunk.js.map": "/static/js/787.a7877110.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef7eb5b3.css",
-    "static/js/main.d2e2733e.js"
+    "static/js/main.3b689a3d.js"
   ]
 }
