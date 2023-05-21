@@ -79,7 +79,7 @@ function MLMap() {
       });
       if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
             Current_County = desired_county.county
-            fetch("http://35.87.6.139/get-new-model", {
+            fetch("https://www.api.whetherweather.org/get-new-model", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -191,7 +191,7 @@ function MLMap() {
       county: Current_County
 
     };
-    fetch("http://35.87.6.139/get-model", {
+    fetch("https://www.api.whetherweather.org/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
