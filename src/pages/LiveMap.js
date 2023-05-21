@@ -41,7 +41,7 @@ function Livemap() {
   useEffect(() => {
     var data = {county: Current_County};
     console.log("http://35.87.6.139/get-model")
-    fetch("https://35.87.6.139/get-model", {
+    fetch("http://35.87.6.139/get-model", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ function Livemap() {
       console.log(center)
       if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
         Current_County = desired_county.county
-        fetch("https://35.87.6.139/get-new-model", {
+        fetch("http://35.87.6.139/get-new-model", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

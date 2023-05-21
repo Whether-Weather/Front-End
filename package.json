@@ -24,7 +24,7 @@
     "web-vitals": "^2.1.4",
     "worker-loader": "^3.0.8"
   },
-  "homepage": "https://Whether-Weather.github.io/",
+  "homepage": "https://www.whetherweather.org/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build --baseurl '/Front-End'",
