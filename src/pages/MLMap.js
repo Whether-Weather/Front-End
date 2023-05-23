@@ -25,6 +25,7 @@ const MAP_STYLE = "mapbox://styles/mapbox/streets-v12";
 // ];
 
 var Current_County = "San Jose, CA"
+const counties = ["San Jose, CA", "Harris County, Texas"];
 
 // DeckGL react component
 function MLMap() {
@@ -100,10 +101,31 @@ function MLMap() {
     }
   };
 
+  const [suggestions, setSuggestions] = useState([]);
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
+    if(event.target.value) {
+      const newSuggestions = counties.filter(county => 
+        county.toLowerCase().includes(event.target.value.toLowerCase())
+      );
+      setSuggestions(newSuggestions);
+    } else {
+      setSuggestions(counties);
+    }
   };
-
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.matches('.map-search-text, .suggestions div')) {
+        setSuggestions([]);
+      }
+    };
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+ 
   const handleViewState = ({ viewState }) => {
     setViewport(viewState);
   };
@@ -230,12 +252,28 @@ function MLMap() {
           className="map-search-text"
           value={searchQuery}
           onChange={handleSearchQueryChange}
+          onFocus={() => setSuggestions(counties)}
         ></input>
         <div>
           <button onClick={handleSearch} className="map-search-button">
             Search
           </button>
         </div>
+        { suggestions.length > 0 && (
+        <div className="suggestions">
+          {suggestions.map((suggestion, index) => (
+            <div 
+              key={index}
+              onClick={() => {
+                setSearchQuery(suggestion);
+                setSuggestions([]);
+              }}
+            >
+              {suggestion}
+            </div>
+          ))}
+        </div>
+      )}
       </div>
       <div className="map-zoom-container">
         <div className="map-zoom">
