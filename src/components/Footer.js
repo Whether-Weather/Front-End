@@ -5,23 +5,23 @@ import {Link} from "react-router-dom";
 const pages = [
     {
         name: 'Privacy Policy',
-        link: '/about',
+        link: '/#/about',
     },
     {
         name: 'Terms of Service',
-        link: '/dataFindings',
+        link: '/#/dataFindings',
     },
     {
         name: 'Legal',
-        link: '/top10',
+        link: '/#/top10',
     },
     {
         name: 'Connect with Us',
-        link: '/liveMap',
+        link: '/#/liveMap',
     },
     {
         name: '@Copywright 2023 Whether Weather Co.',
-        link: '/mlMap',
+        link: '/#/mlMap',
     },
 ]
 
