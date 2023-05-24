@@ -20,7 +20,7 @@ const pages = [
   },
   {
       name: 'Top 10 Roads',
-      link: '/#/top10',
+      link: '/top10',
   },
   {
       name: 'Live Map',
@@ -63,13 +63,13 @@ const Landing = () => {
         imageUrl={RainyImage}
         altText="about us"
         caption="About Us"
-        linkUrl="/about"
+        linkUrl="/#/about"
         />
         <ImageWithText
         imageUrl={LiveGraph}
         altText="findings"
         caption="Data Findings"
-        linkUrl="/dataFindings"
+        linkUrl="/#/dataFindings"
         />
         <ImageWithText
         imageUrl={FunnyTrafic}
@@ -87,7 +87,7 @@ const Landing = () => {
         imageUrl={DarkWorld}
         altText="mlm"
         caption="Machine Learning Map"
-        linkUrl="/mlMap"
+        linkUrl="/#/mlMap"
         />
       </div>
       <div className="landing-top-container">
