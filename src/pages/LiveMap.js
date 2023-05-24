@@ -39,9 +39,11 @@ function Livemap() {
   }
   const [geojsonData, setGeojsonData] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     var data = {county: Current_County};
+    setIsLoading(true);
     console.log("https://www.api.whetherweather.org/get-model")
     fetch("https://www.api.whetherweather.org/get-model", {
       method: "POST",
@@ -57,9 +59,11 @@ function Livemap() {
         console.log(data)
         setGeojsonData(data.geojson);
         setWeatherData(data.weather)
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching geojson data: ", error);
+        setIsLoading(false);
       });
   }, []); // empty dependency array to ensure the effect runs only once
 
@@ -95,6 +99,7 @@ function Livemap() {
       console.log(center)
       if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
         Current_County = desired_county.county
+        setIsLoading(true);
         fetch("https://www.api.whetherweather.org/get-new-model", {
         method: "POST",
         headers: {
@@ -106,10 +111,12 @@ function Livemap() {
         .then((data) => {
     
           setGeojsonData(data.geojson);
-          setWeatherData(data.weather)
+          setWeatherData(data.weather);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching geojson data: ", error);
+          setIsLoading(false);
         }); 
       }
     } catch (error) {
@@ -301,6 +308,24 @@ function Livemap() {
             {...viewport}
           ></Map>
         </DeckGL>
+        {isLoading && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 1000,
+          }}
+        >
+          <div className="spinner"></div> 
+        </div>
+      )}
       </div>
       {clickedObject && showPopup && (
         <div

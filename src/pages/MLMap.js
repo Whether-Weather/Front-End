@@ -41,6 +41,7 @@ function MLMap() {
   const [isHovering, setIsHovering] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [hoveredObject, setHoveredObject] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const closePopup = () => {
     setClickedObject(null);
@@ -80,6 +81,7 @@ function MLMap() {
       });
       if (desired_county.county === "Harris County, Texas" || desired_county.county === "San Jose, CA") {
             Current_County = desired_county.county
+            setIsLoading(true);
             fetch("https://www.api.whetherweather.org/get-new-model", {
             method: "POST",
             headers: {
@@ -91,9 +93,11 @@ function MLMap() {
             .then((data) => {
               
               setGeojsonData(data.geojson);
+              setIsLoading(false);
             })
             .catch((error) => {
               console.error("Error fetching geojson data: ", error);
+              setIsLoading(false);
             }); 
           }
     } catch (error) {
@@ -213,6 +217,7 @@ function MLMap() {
       county: Current_County
 
     };
+    setIsLoading(true);
     fetch("https://www.api.whetherweather.org/get-model", {
       method: "POST",
       headers: {
@@ -223,9 +228,11 @@ function MLMap() {
       .then((response) => response.json())
       .then((data) => {
         setGeojsonData(data.geojson);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching geojson data: ", error);
+        setIsLoading(false);
       });
   };
 
@@ -428,6 +435,24 @@ function MLMap() {
             {...viewport}
           />
         </DeckGL>
+        {isLoading && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 1000,
+          }}
+        >
+          <div className="spinner"></div> 
+        </div>
+      )}
       </div>
       {clickedObject && showPopup && (
         <div
