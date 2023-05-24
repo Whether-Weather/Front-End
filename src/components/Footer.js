@@ -20,7 +20,7 @@ const pages = [
         link: '/liveMap',
     },
     {
-        name: '@Copywright 2023 Whether Weather Co.',
+        name: '@Copywrite 2023 Whether Weather Co.',
         link: '/mlMap',
     },
 ]

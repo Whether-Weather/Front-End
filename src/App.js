@@ -15,6 +15,10 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  useEffect(() => {
     ReactGA.send('pageview', location.pathname + location.search);
   }, [location]);
 
