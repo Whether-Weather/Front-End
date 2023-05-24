@@ -1,21 +1,18 @@
 import '../App.css';
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ImageWithText = ({imageUrl, altText, caption, linkUrl}) => {
   return (
       <div className="landing-tile">
-        {/* <a href={linkUrl}> */}
+        <Link to={linkUrl}>
           <div className="landing-tile-text-container">
-            <a href={linkUrl}>
-              <div className="landing-tile-text">{caption}</div>
-            </a>
+            <div className="landing-tile-text">{caption}</div>
           </div>
           <div>
-            <a href={linkUrl}>
-              <img src={imageUrl} className="landing-tiles-image-container" alt={altText} />
-            </a>
+            <img src={imageUrl} className="landing-tiles-image-container" alt={altText} />
           </div>
-        {/* </a> */}
+        </Link>
     </div>
   );
 };
