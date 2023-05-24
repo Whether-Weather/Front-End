@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.731a6572.css",
-    "main.js": "/static/js/main.e7f59bc7.js",
+    "main.css": "/static/css/main.14df5dbe.css",
+    "main.js": "/static/js/main.b1fdcfc5.js",
     "static/js/787.a7877110.chunk.js": "/static/js/787.a7877110.chunk.js",
     "static/media/BlurredLightsCropped.jpg": "/static/media/BlurredLightsCropped.68ba3ef1b6d233bbb9e3.jpg",
     "static/media/DarkWorld.png": "/static/media/DarkWorld.f85796d7efed7bdf5023.png",
@@ -28,12 +28,12 @@
     "static/media/roundaboutSnow.jpg": "/static/media/roundaboutSnow.c225dee5a02f307044bd.jpg",
     "static/media/logo.svg": "/static/media/logo.015850420cde59633d036bb88ba2c6cc.svg",
     "index.html": "/index.html",
-    "main.731a6572.css.map": "/static/css/main.731a6572.css.map",
-    "main.e7f59bc7.js.map": "/static/js/main.e7f59bc7.js.map",
+    "main.14df5dbe.css.map": "/static/css/main.14df5dbe.css.map",
+    "main.b1fdcfc5.js.map": "/static/js/main.b1fdcfc5.js.map",
     "787.a7877110.chunk.js.map": "/static/js/787.a7877110.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.731a6572.css",
-    "static/js/main.e7f59bc7.js"
+    "static/css/main.14df5dbe.css",
+    "static/js/main.b1fdcfc5.js"
   ]
 }
