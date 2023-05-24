@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
-import { Routes, Route, useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
 import Landing from './pages/Landing.js';
 import About from './pages/About.js';
 import Data from './pages/Data.js';
@@ -34,4 +34,12 @@ function App() {
   );
 }
 
-export default App;
+function Root() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
+
+export default Root;
