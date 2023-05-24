@@ -5,23 +5,23 @@ import {Link} from "react-router-dom";
 const pages = [
     {
         name: 'About Us',
-        link: '/#/about',
+        link: '/about',
     },
     {
         name: 'Data Findings',
-        link: '/#/dataFindings',
+        link: '/dataFindings',
     },
     {
         name: 'Top 10 Roads',
-        link: '/#/top10',
+        link: '/top10',
     },
     {
         name: 'Live Map',
-        link: '/#/liveMap',
+        link: '/liveMap',
     },
     {
         name: 'Machine Learning Map',
-        link: '/#/mlMap',
+        link: '/mlMap',
     },
 ]
 
