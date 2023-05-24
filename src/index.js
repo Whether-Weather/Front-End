@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +10,11 @@ ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>
 );
 
 reportWebVitals();
