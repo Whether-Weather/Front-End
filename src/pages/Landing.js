@@ -12,23 +12,23 @@ import SunriseTraffic from '../assets/SunriseTraffic.png';
 const pages = [
   {
       name: 'About Us',
-      link: '/#/about',
+      link: '/about',
   },
   {
       name: 'Data Findings',
-      link: '/#/dataFindings',
+      link: '/dataFindings',
   },
   {
       name: 'Top 10 Roads',
-      link: '/#/top10',
+      link: '/top10',
   },
   {
       name: 'Live Map',
-      link: '/#/liveMap',
+      link: '/liveMap',
   },
   {
       name: 'Machine Learning Map',
-      link: '/#/mlMap',
+      link: '/mlMap',
   },
 ]
 
@@ -63,19 +63,19 @@ const Landing = () => {
         imageUrl={RainyImage}
         altText="about us"
         caption="About Us"
-        linkUrl="/#/about"
+        linkUrl="/about"
         />
         <ImageWithText
         imageUrl={LiveGraph}
         altText="findings"
         caption="Data Findings"
-        linkUrl="/#/dataFindings"
+        linkUrl="/dataFindings"
         />
         <ImageWithText
         imageUrl={FunnyTrafic}
         altText="top 10"
         caption="Top 10 Most Dangerous Roads"
-        linkUrl="/#/top10"
+        linkUrl="/top10"
         />
         <ImageWithText
         imageUrl={DarkMap}
@@ -87,7 +87,7 @@ const Landing = () => {
         imageUrl={DarkWorld}
         altText="mlm"
         caption="Machine Learning Map"
-        linkUrl="/#/mlMap"
+        linkUrl="/mlMap"
         />
       </div>
       <div className="landing-top-container">
