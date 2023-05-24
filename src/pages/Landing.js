@@ -20,7 +20,7 @@ const pages = [
   },
   {
       name: 'Top 10 Roads',
-      link: '/top10',
+      link: '/#/top10',
   },
   {
       name: 'Live Map',
@@ -75,7 +75,7 @@ const Landing = () => {
         imageUrl={FunnyTrafic}
         altText="top 10"
         caption="Top 10 Most Dangerous Roads"
-        linkUrl="/top10"
+        linkUrl="/#/top10"
         />
         <ImageWithText
         imageUrl={DarkMap}

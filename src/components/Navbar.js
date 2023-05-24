@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const pages = [
     {
         name: 'About Us',
-        link: '/about',
+        link: '/#/about',
     },
     {
         name: 'Data Findings',
