@@ -571,7 +571,7 @@ a:active { text-decoration: none; }
   position: absolute;
   display: flex;
   flex-direction: column;
-  margin-top: calc(80vh);
+  margin-top: calc(75vh);
   margin-left: calc(100% - 80px);
   z-index: 10;
   justify-content: flex-end;
